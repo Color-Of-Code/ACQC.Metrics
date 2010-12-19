@@ -34,9 +34,9 @@
 	</Company_Info>
 	<Program_Info>
 		<Program_Name>ACQC Metrics</Program_Name>
-		<Program_Version>1.0.2</Program_Version>
-		<Program_Release_Month>06</Program_Release_Month>
-		<Program_Release_Day>07</Program_Release_Day>
+		<Program_Version>1.0.3</Program_Version>
+		<Program_Release_Month>12</Program_Release_Month>
+		<Program_Release_Day>19</Program_Release_Day>
 		<Program_Release_Year>2010</Program_Release_Year>
 		<Program_Cost_Dollars />
 		<Program_Cost_Other_Code />
@@ -46,13 +46,13 @@
 		<Program_Install_Support>No Install Support</Program_Install_Support>
 		<Program_OS_Support>Win7 x32,Win7 x64,WinServer,WinVista,WinVista x64,WinXP</Program_OS_Support>
 		<Program_Language>English</Program_Language>
-		<Program_Change_Info>First Official Release for getting feedback</Program_Change_Info>
+		<Program_Change_Info>Added support for command line options</Program_Change_Info>
 		<Program_Specific_Category>Development Tools</Program_Specific_Category>
 		<Program_Category_Class>Development::C / C++ / C#</Program_Category_Class>
 		<Program_System_Requirements>.NET 3.5</Program_System_Requirements>
 		<File_Info>
-			<File_Size_Bytes>61566</File_Size_Bytes>
-			<File_Size_K>60</File_Size_K>
+			<File_Size_Bytes>63914</File_Size_Bytes>
+			<File_Size_K>62</File_Size_K>
 			<File_Size_MB>0.06</File_Size_MB>
 		</File_Info>
 		<Expire_Info>
@@ -75,6 +75,7 @@
 			<Char_Desc_2000>ACQC Metrics computes typical source code file and function metrics. What are metrics good for? Well, it measures the software in terms of complexity for example. Very long or complex functions can be identified in order to break them down in smaller pieces (for better maintainability). Maybe you are also just interested in knowing of big the software currently is, then ACQC metrics is also good for you.
 
 Just drag &amp; drop files on its main window. Metrics are then computed and displayed in a list. The contents of the lists can be copied and pasted.
+Alternatively, the tool can be driven by command line options (tool -o output.xml file-to-parse.cpp) with no gui for integration as a batch job in other tools.
 
 Features:
 - LINES: the number of physical lines in your file
@@ -98,7 +99,7 @@ The tool doesn't need any setup and does not modify your registry. The only prer
 			<Application_XML_File_URL>http://www.color-of-code.de/images/acqc/ACQC_PAD.xml</Application_XML_File_URL>
 		</Application_URLs>
 		<Download_URLs>
-			<Primary_Download_URL>http://www.color-of-code.de/images/acqc/ACQC-Metrics-1.0.2.zip</Primary_Download_URL>
+			<Primary_Download_URL>http://www.color-of-code.de/images/acqc/ACQC-Metrics-1.0.3.zip</Primary_Download_URL>
 			<Secondary_Download_URL>http://www.color-of-code.de/images/acqc/ACQC-Metrics.zip</Secondary_Download_URL>
 			<Additional_Download_URL_1 />
 			<Additional_Download_URL_2 />
