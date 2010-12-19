@@ -44,6 +44,10 @@ namespace ACQC.Metrics
                     {
                         filenameOut = parameter;
                     }
+                    else if (option == "-h" || option == "--help")
+                    {
+                        DumpHelp();
+                    }
                     else if (option == null)
                     {
                         filenameIn = parameter;
@@ -51,10 +55,19 @@ namespace ACQC.Metrics
                     else
                     {
                         Console.Error.WriteLine("Unknown command line option {0}", option);
+                        DumpHelp();
                     }
                     option = null;
                 }
             }
+        }
+
+        private static void DumpHelp()
+        {
+            Console.Out.WriteLine("Usage:");
+            Console.Out.WriteLine("{0} [- options] <c or c++ file>", "metrics");
+            Console.Out.WriteLine(" -o <output xml file>");
+            Console.Out.WriteLine("The program dumps the results out to the console or given file.");
         }
 
         //debug arguments: -o metrics.xml Reference.cpp
@@ -81,10 +94,6 @@ namespace ACQC.Metrics
                 Application.EnableVisualStyles();
                 Application.SetCompatibleTextRenderingDefault(false);
                 Application.Run(new MainForm());
-                //Console.Out.WriteLine("Usage:");
-                //Console.Out.WriteLine("{0} [- options] <c or c++ file>", "metrics");
-                //Console.Out.WriteLine(" -o <output xml file>");
-                //Console.Out.WriteLine("The program dumps the results out to the console or given file.");
                 return -1;
             }
         

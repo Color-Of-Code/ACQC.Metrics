@@ -29,6 +29,7 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AboutBox));
             this.tableLayoutPanel = new System.Windows.Forms.TableLayoutPanel();
+            this.labelDownload = new System.Windows.Forms.Label();
             this.logoPictureBox = new System.Windows.Forms.PictureBox();
             this.labelProductName = new System.Windows.Forms.Label();
             this.labelVersion = new System.Windows.Forms.Label();
@@ -36,7 +37,6 @@
             this.labelCompanyName = new System.Windows.Forms.Label();
             this.okButton = new System.Windows.Forms.Button();
             this.linkLabel = new System.Windows.Forms.LinkLabel();
-            this.labelDownload = new System.Windows.Forms.Label();
             this.tableLayoutPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.logoPictureBox)).BeginInit();
             this.SuspendLayout();
@@ -68,6 +68,18 @@
             this.tableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 14.28571F));
             this.tableLayoutPanel.Size = new System.Drawing.Size(417, 265);
             this.tableLayoutPanel.TabIndex = 0;
+            // 
+            // labelDownload
+            // 
+            this.labelDownload.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.labelDownload.Location = new System.Drawing.Point(143, 156);
+            this.labelDownload.Margin = new System.Windows.Forms.Padding(6, 0, 3, 0);
+            this.labelDownload.MaximumSize = new System.Drawing.Size(0, 17);
+            this.labelDownload.Name = "labelDownload";
+            this.labelDownload.Size = new System.Drawing.Size(271, 17);
+            this.labelDownload.TabIndex = 26;
+            this.labelDownload.Text = "Download link:";
+            this.labelDownload.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // logoPictureBox
             // 
@@ -151,18 +163,6 @@
             this.linkLabel.Text = "http://www.color-of-code.de";
             this.linkLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.linkLabel.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabel_LinkClicked);
-            // 
-            // labelDownload
-            // 
-            this.labelDownload.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.labelDownload.Location = new System.Drawing.Point(143, 156);
-            this.labelDownload.Margin = new System.Windows.Forms.Padding(6, 0, 3, 0);
-            this.labelDownload.MaximumSize = new System.Drawing.Size(0, 17);
-            this.labelDownload.Name = "labelDownload";
-            this.labelDownload.Size = new System.Drawing.Size(271, 17);
-            this.labelDownload.TabIndex = 26;
-            this.labelDownload.Text = "Download link:";
-            this.labelDownload.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // AboutBox
             // 
