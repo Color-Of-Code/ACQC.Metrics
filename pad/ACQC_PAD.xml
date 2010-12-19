@@ -1,0 +1,224 @@
+<?xml version="1.0" ?>
+<XML_DIZ_INFO>
+	<MASTER_PAD_VERSION_INFO>
+		<MASTER_PAD_VERSION>3.10</MASTER_PAD_VERSION>
+		<MASTER_PAD_EDITOR>PADGen 3.1.0.41 http://www.padgen.org</MASTER_PAD_EDITOR>
+		<MASTER_PAD_INFO>Portable Application Description, or PAD for short, is a data set that is used by shareware authors to disseminate information to anyone interested in their software products. To find out more go to http://www.asp-shareware.org/pad</MASTER_PAD_INFO>
+	</MASTER_PAD_VERSION_INFO>
+	<Company_Info>
+		<Company_Name>Color of Code</Company_Name>
+		<Address_1 />
+		<Address_2 />
+		<City_Town>Waldenbuch</City_Town>
+		<State_Province />
+		<Zip_Postal_Code />
+		<Country>Germany</Country>
+		<Company_WebSite_URL>http://www.color-of-code.de</Company_WebSite_URL>
+		<Contact_Info>
+			<Author_First_Name>Jaap</Author_First_Name>
+			<Author_Last_Name>de Haan</Author_Last_Name>
+			<Author_Email>jaap.dehaan@color-of-code.de</Author_Email>
+			<Contact_First_Name>Jaap</Contact_First_Name>
+			<Contact_Last_Name>de Haan</Contact_Last_Name>
+			<Contact_Email>jaap.dehaan@color-of-code.de</Contact_Email>
+		</Contact_Info>
+		<Support_Info>
+			<Sales_Email>jaap.dehaan@color-of-code.de</Sales_Email>
+			<Support_Email>jaap.dehaan@color-of-code.de</Support_Email>
+			<General_Email>jaap.dehaan@color-of-code.de</General_Email>
+			<Sales_Phone />
+			<Support_Phone />
+			<General_Phone />
+			<Fax_Phone />
+		</Support_Info>
+	</Company_Info>
+	<Program_Info>
+		<Program_Name>ACQC Metrics</Program_Name>
+		<Program_Version>1.0.2</Program_Version>
+		<Program_Release_Month>06</Program_Release_Month>
+		<Program_Release_Day>07</Program_Release_Day>
+		<Program_Release_Year>2010</Program_Release_Year>
+		<Program_Cost_Dollars />
+		<Program_Cost_Other_Code />
+		<Program_Cost_Other />
+		<Program_Type>Freeware</Program_Type>
+		<Program_Release_Status>New Release</Program_Release_Status>
+		<Program_Install_Support>No Install Support</Program_Install_Support>
+		<Program_OS_Support>Win7 x32,Win7 x64,WinServer,WinVista,WinVista x64,WinXP</Program_OS_Support>
+		<Program_Language>English</Program_Language>
+		<Program_Change_Info>First Official Release for getting feedback</Program_Change_Info>
+		<Program_Specific_Category>Development Tools</Program_Specific_Category>
+		<Program_Category_Class>Development::C / C++ / C#</Program_Category_Class>
+		<Program_System_Requirements>.NET 3.5</Program_System_Requirements>
+		<File_Info>
+			<File_Size_Bytes>61566</File_Size_Bytes>
+			<File_Size_K>60</File_Size_K>
+			<File_Size_MB>0.06</File_Size_MB>
+		</File_Info>
+		<Expire_Info>
+			<Has_Expire_Info>N</Has_Expire_Info>
+			<Expire_Count />
+			<Expire_Based_On />
+			<Expire_Other_Info />
+			<Expire_Month />
+			<Expire_Day />
+			<Expire_Year />
+		</Expire_Info>
+	</Program_Info>
+	<Program_Descriptions>
+		<English>
+			<Keywords>acqc, file, metrics, c, c++, mac cabe, cyclomatic, complexity, lines of code, arguments, drag, drop, measure, copy, paste</Keywords>
+			<Char_Desc_45>Compute source code metrics</Char_Desc_45>
+			<Char_Desc_80>ACQC Metrics computes typical source code file and function metrics.</Char_Desc_80>
+			<Char_Desc_250>ACQC Metrics computes typical source code file and function metrics by just dragging and dropping files on its main window. Metrics are then computed and displayed in a list. The contents of the lists can be copied and pasted.</Char_Desc_250>
+			<Char_Desc_450>ACQC Metrics computes typical source code file and function metrics. What are metrics good for? Well, it measures the software in terms of complexity for example. Very long or complex functions can be identified in order to break them down in smaller pieces (for better maintainability). Maybe you are also just interested in knowing of big your software currently is, then ACQC metrics is also good for you.</Char_Desc_450>
+			<Char_Desc_2000>ACQC Metrics computes typical source code file and function metrics. What are metrics good for? Well, it measures the software in terms of complexity for example. Very long or complex functions can be identified in order to break them down in smaller pieces (for better maintainability). Maybe you are also just interested in knowing of big the software currently is, then ACQC metrics is also good for you.
+
+Just drag &amp; drop files on its main window. Metrics are then computed and displayed in a list. The contents of the lists can be copied and pasted.
+
+Features:
+- LINES: the number of physical lines in your file
+- LLOC: the logical lines of code (without comments, without spaces)
+- LLOCi: the logical lines of comments (lines caontaining only comments)
+- LLOW: the logical whitespace lines (lines without any other content than whitespace characters)
+- PROCS: the number of procedures/functions inside the file
+- CARGS: the total number of arguments used by the function or functions in the file
+- CC: the cyclomatic complexity known also under McCabe complexity, represents the number of decisions taken by the code
+- DC: the "depth" complexity. If you imbricate a lot (if's inside if's or while's inside switches for example) this will get high.
+
+The tool doesn't need any setup and does not modify your registry. The only prerequisite is to have a .NET 3.5 installed.</Char_Desc_2000>
+		</English>
+	</Program_Descriptions>
+	<Web_Info>
+		<Application_URLs>
+			<Application_Info_URL>http://www.color-of-code.de/index.php?option=com_content&amp;view=article&amp;id=56&amp;Itemid=64</Application_Info_URL>
+			<Application_Order_URL>http://www.color-of-code.de/index.php?option=com_content&amp;view=article&amp;id=56&amp;Itemid=64</Application_Order_URL>
+			<Application_Screenshot_URL>http://www.color-of-code.de/images/acqc/acqcmetrics.png</Application_Screenshot_URL>
+			<Application_Icon_URL>http://www.color-of-code.de/images/acqc/acqcmetrics_icon.png</Application_Icon_URL>
+			<Application_XML_File_URL>http://www.color-of-code.de/images/acqc/ACQC_PAD.xml</Application_XML_File_URL>
+		</Application_URLs>
+		<Download_URLs>
+			<Primary_Download_URL>http://www.color-of-code.de/images/acqc/ACQC-Metrics-1.0.2.zip</Primary_Download_URL>
+			<Secondary_Download_URL>http://www.color-of-code.de/images/acqc/ACQC-Metrics.zip</Secondary_Download_URL>
+			<Additional_Download_URL_1 />
+			<Additional_Download_URL_2 />
+		</Download_URLs>
+	</Web_Info>
+	<Permissions>
+		<Distribution_Permissions>Freeware, provided as is, use it as you like, but do not modify the executable.
+</Distribution_Permissions>
+		<EULA>Freeware, provided as is, use it as you like, but do not modify the executable.
+Please send me feedback per EMail to tell me what you like/dislike.</EULA>
+	</Permissions>
+	<Affiliates>
+		<Affiliates_FORM>Y</Affiliates_FORM>
+		<Affiliates_VERSION>1.4</Affiliates_VERSION>
+		<Affiliates_URL>http://www.asp-shareware.org/pad/extensions/Affiliates.htm</Affiliates_URL>
+		<Affiliates_Information_Page />
+		<Affiliates_Avangate_Order_Page />
+		<Affiliates_Avangate_Vendor_ID />
+		<Affiliates_Avangate_Product_ID />
+		<Affiliates_Avangate_Maximum_Commission_Rate />
+		<Affiliates_BMTMicro_Order_Page />
+		<Affiliates_BMTMicro_Vendor_ID />
+		<Affiliates_BMTMicro_Product_ID />
+		<Affiliates_BMTMicro_Maximum_Commission_Rate />
+		<Affiliates_Cleverbridge_Order_Page />
+		<Affiliates_Cleverbridge_Vendor_ID />
+		<Affiliates_Cleverbridge_Product_ID />
+		<Affiliates_Cleverbridge_Maximum_Commission_Rate />
+		<Affiliates_clixGalore_Order_Page />
+		<Affiliates_clixGalore_Vendor_ID />
+		<Affiliates_clixGalore_Product_ID />
+		<Affiliates_clixGalore_Maximum_Commission_Rate />
+		<Affiliates_CommissionJunction_Order_Page />
+		<Affiliates_CommissionJunction_Vendor_ID />
+		<Affiliates_CommissionJunction_Product_ID />
+		<Affiliates_CommissionJunction_Maximum_Commission_Rate />
+		<Affiliates_DigiBuy_Order_Page />
+		<Affiliates_DigiBuy_Vendor_ID />
+		<Affiliates_DigiBuy_Product_ID />
+		<Affiliates_DigiBuy_Maximum_Commission_Rate />
+		<Affiliates_DigitalCandle_Order_Page />
+		<Affiliates_DigitalCandle_Vendor_ID />
+		<Affiliates_DigitalCandle_Product_ID />
+		<Affiliates_DigitalCandle_Maximum_Commission_Rate />
+		<Affiliates_Emetrix_Order_Page />
+		<Affiliates_Emetrix_Vendor_ID />
+		<Affiliates_Emetrix_Product_ID />
+		<Affiliates_Emetrix_Maximum_Commission_Rate />
+		<Affiliates_eSellerate_Order_Page />
+		<Affiliates_eSellerate_Vendor_ID />
+		<Affiliates_eSellerate_Product_ID />
+		<Affiliates_eSellerate_Maximum_Commission_Rate />
+		<Affiliates_Kagi_Order_Page />
+		<Affiliates_Kagi_Vendor_ID />
+		<Affiliates_Kagi_Product_ID />
+		<Affiliates_Kagi_Maximum_Commission_Rate />
+		<Affiliates_LinkShare_Order_Page />
+		<Affiliates_LinkShare_Vendor_ID />
+		<Affiliates_LinkShare_Product_ID />
+		<Affiliates_LinkShare_Maximum_Commission_Rate />
+		<Affiliates_NorthStarSol_Order_Page />
+		<Affiliates_NorthStarSol_Vendor_ID />
+		<Affiliates_NorthStarSol_Product_ID />
+		<Affiliates_NorthStarSol_Maximum_Commission_Rate />
+		<Affiliates_OneNetworkDirect_Order_Page />
+		<Affiliates_OneNetworkDirect_Vendor_ID />
+		<Affiliates_OneNetworkDirect_Product_ID />
+		<Affiliates_OneNetworkDirect_Maximum_Commission_Rate />
+		<Affiliates_Order1_Order_Page />
+		<Affiliates_Order1_Vendor_ID />
+		<Affiliates_Order1_Product_ID />
+		<Affiliates_Order1_Maximum_Commission_Rate />
+		<Affiliates_Osolis_Order_Page />
+		<Affiliates_Osolis_Vendor_ID />
+		<Affiliates_Osolis_Product_ID />
+		<Affiliates_Osolis_Maximum_Commission_Rate />
+		<Affiliates_Plimus_Order_Page />
+		<Affiliates_Plimus_Vendor_ID />
+		<Affiliates_Plimus_Product_ID />
+		<Affiliates_Plimus_Maximum_Commission_Rate />
+		<Affiliates_Regnet_Order_Page />
+		<Affiliates_Regnet_Vendor_ID />
+		<Affiliates_Regnet_Product_ID />
+		<Affiliates_Regnet_Maximum_Commission_Rate />
+		<Affiliates_Regnow_Order_Page />
+		<Affiliates_Regnow_Vendor_ID />
+		<Affiliates_Regnow_Product_ID />
+		<Affiliates_Regnow_Maximum_Commission_Rate />
+		<Affiliates_Regsoft_Order_Page />
+		<Affiliates_Regsoft_Vendor_ID />
+		<Affiliates_Regsoft_Product_ID />
+		<Affiliates_Regsoft_Maximum_Commission_Rate />
+		<Affiliates_ShareIt_Order_Page />
+		<Affiliates_ShareIt_Vendor_ID />
+		<Affiliates_ShareIt_Product_ID />
+		<Affiliates_ShareIt_Maximum_Commission_Rate />
+		<Affiliates_Shareasale_Order_Page />
+		<Affiliates_Shareasale_Vendor_ID />
+		<Affiliates_Shareasale_Product_ID />
+		<Affiliates_Shareasale_Maximum_Commission_Rate />
+		<Affiliates_SWReg_Order_Page />
+		<Affiliates_SWReg_Vendor_ID />
+		<Affiliates_SWReg_Product_ID />
+		<Affiliates_SWReg_Maximum_Commission_Rate />
+		<Affiliates_V-Share_Order_Page />
+		<Affiliates_V-Share_Vendor_ID />
+		<Affiliates_V-Share_Product_ID />
+		<Affiliates_V-Share_Maximum_Commission_Rate />
+		<Affiliates_VFree_Order_Page />
+		<Affiliates_VFree_Vendor_ID />
+		<Affiliates_VFree_Product_ID />
+		<Affiliates_VFree_Maximum_Commission_Rate />
+		<Affiliates_Yaskifo_Order_Page />
+		<Affiliates_Yaskifo_Vendor_ID />
+		<Affiliates_Yaskifo_Product_ID />
+		<Affiliates_Yaskifo_Maximum_Commission_Rate />
+	</Affiliates>
+	<ASP>
+		<ASP_FORM>Y</ASP_FORM>
+		<ASP_Member>N</ASP_Member>
+		<ASP_Member_Number />
+	</ASP>
+</XML_DIZ_INFO>
