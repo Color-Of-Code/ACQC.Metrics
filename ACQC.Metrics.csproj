@@ -73,6 +73,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Common\Objects\mClass.cs" />
+    <Compile Include="Common\Objects\mFile.cs" />
+    <Compile Include="Common\Objects\mMethod.cs" />
     <Compile Include="Controls\AboutBox.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -80,6 +83,7 @@
       <DependentUpon>AboutBox.cs</DependentUpon>
     </Compile>
     <Compile Include="Controls\ListViewColumnSorter.cs" />
+    <Compile Include="Data\MetricBounds.cs" />
     <Compile Include="Data\Metrics.cs" />
     <Compile Include="Controls\MainForm.cs">
       <SubType>Form</SubType>
@@ -88,7 +92,7 @@
       <DependentUpon>MainForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Helper\Computer.cs" />
-    <Compile Include="Parser\IParser.cs" />
+    <Compile Include="Common\IParser.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Parser\CppParser.cs" />
     <Compile Include="ParserState.cs" />
@@ -149,6 +153,7 @@
       <Install>true</Install>
     </BootstrapperPackage>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

@@ -10,27 +10,6 @@ namespace ACQC.Metrics.Data
 
     public class Metrics : IXmlSerializable
     {
-        #region Limits
-        // Limits (at the moment hard coded)
-        public const int CARGS_MIN = 0;
-        public const int CARGS_MAX = 5;
-
-        public const int LLOC_MIN = 0;
-        public const int LLOC_MAX = 200;
-
-        public const int LLOCi_MIN = 3;
-        public const int LLOCi_MAX = 2000;
-
-        public const int CC_MIN = 1;
-        public const int CC_MAX = 10;
-
-        public const int DC_MIN = 0;
-        public const int DC_MAX = 15;
-
-        public const int LINES_MIN = 0;
-        public const int LINES_MAX = 300;
-        #endregion
-
         public Metrics(String filename, String name, Int32 position)
         {
             Name = name;
