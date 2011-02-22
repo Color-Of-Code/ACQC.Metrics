@@ -29,6 +29,8 @@ namespace ACQC.Metrics {
 			listView.Groups.Add (listViewGroupFunctions);
 			listView.Groups.Add (listViewGroupFiles);
 			listView.Groups.Add (listViewGroupSum);
+
+			AddEditors ();
 		}
 
 		private void buttonClear_Click (object sender, EventArgs e)
@@ -289,27 +291,36 @@ namespace ACQC.Metrics {
 			foreach (ListViewItem item in listView.SelectedItems) {
 				Data.Metrics metrics = item.Tag as Data.Metrics;
 				if (metrics != null)
-					OpenSourceFile(metrics.Filename, metrics.Position);
+					OpenSourceFile (metrics.Filename, metrics.Position);
 			}
 		}
 
-		private void OpenSourceFile(String filename, int line)
+		private void OpenSourceFile (String filename, int line)
 		{
 			// try to detect notepad++
-			RegistryKey hklm = Registry.LocalMachine;
-			hklm = hklm.OpenSubKey (@"SOFTWARE\Notepad++");
-			if (hklm != null) {
-				String path = hklm.GetValue (String.Empty, String.Empty) as String;
-				FileInfo f = new FileInfo (Path.Combine (path, "Notepad++.exe"));
-				if (f.Exists) {
-					ProcessStartInfo psi = new ProcessStartInfo();
-					psi.FileName = f.FullName;
-					psi.Arguments = String.Format("-n{1} \"{0}\"", filename, line);
+			String editorName = comboBoxEditor.SelectedItem.ToString();
+			switch (editorName)
+			{
+			case EDITOR_NOTEPAD:
+				RegistryKey hklm = Registry.LocalMachine;
+				hklm = hklm.OpenSubKey (@"SOFTWARE\Notepad++");
+				if (hklm != null) {
+					String path = hklm.GetValue (String.Empty, String.Empty) as String;
+					FileInfo f = new FileInfo (Path.Combine (path, "Notepad++.exe"));
+					if (f.Exists) {
+						ProcessStartInfo psi = new ProcessStartInfo ();
+						psi.FileName = f.FullName;
+						psi.Arguments = String.Format ("-n{1} \"{0}\"", filename, line);
 
-					Process notePad = new Process();
-					notePad.StartInfo = psi;
-					notePad.Start();
+						Process notePad = new Process ();
+						notePad.StartInfo = psi;
+						notePad.Start ();
+					}
 				}
+				break;
+			default:
+				Process.Start(filename);
+				break;
 			}
 
 			//<Name>Ultra Edit</Name>
@@ -343,6 +354,47 @@ namespace ACQC.Metrics {
 			//<Name>SciTE</Name>
 			//<ExecName>SciTE.exe</ExecName>
 			//<Format>&quot;%e&quot; &quot;%f&quot; -goto:%l,%c</Format>
-}
+		}
+
+		private const String EDITOR_DEFAULT = "(Default handler)";
+		private const String EDITOR_NOTEPAD = "Notepad++";
+		private const String EDITOR_REQUEST = "Request support for a new editor...";
+
+		private void AddEditors ()
+		{
+			comboBoxEditor.Items.Add (EDITOR_DEFAULT);
+			RegistryKey hklm = Registry.LocalMachine;
+			hklm = hklm.OpenSubKey (@"SOFTWARE\Notepad++");
+			if (hklm != null) {
+				String path = hklm.GetValue (String.Empty, String.Empty) as String;
+				FileInfo f = new FileInfo (Path.Combine (path, "Notepad++.exe"));
+				if (f.Exists) {
+					comboBoxEditor.Items.Add (EDITOR_NOTEPAD);
+				}
+			}
+
+			Settings.Default.Upgrade();
+			String editor = Settings.Default.Editor;
+			if (String.IsNullOrEmpty(editor))
+				editor = EDITOR_DEFAULT;
+			comboBoxEditor.SelectedItem = editor;
+
+			comboBoxEditor.Items.Add ("Request support for a new editor...");
+		}
+
+		private void comboBoxEditor_SelectedIndexChanged (object sender, EventArgs e)
+		{
+			String editorName = comboBoxEditor.SelectedItem.ToString();
+			if (editorName == EDITOR_REQUEST)
+			{
+				Process.Start("mailto:jaap.dehaan@color-of-code.de?subject=ACQC.Metrics, please add support for editor <NAME>");
+				comboBoxEditor.SelectedItem = EDITOR_DEFAULT;
+			}
+			else
+			{
+				Settings.Default.Editor = editorName;
+				Settings.Default.Save();
+			}
+		}
 	}
 }

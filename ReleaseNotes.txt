@@ -6,4 +6,5 @@ Planned
     - added license text into GUI
     - colored items according to their metrics
 	- double clicking on one item opens it in notepad++ at the right line (if notepad++ detected)
+	- added extensible editor list (with request per email for missing support)
 

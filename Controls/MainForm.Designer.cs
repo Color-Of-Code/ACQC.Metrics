@@ -47,6 +47,7 @@
 			this.buttonAbout = new System.Windows.Forms.Button ();
 			this.checkBoxShowFiles = new System.Windows.Forms.CheckBox ();
 			this.checkBoxShowFunctions = new System.Windows.Forms.CheckBox ();
+			this.comboBoxEditor = new System.Windows.Forms.ComboBox ();
 			this.toolTips = new System.Windows.Forms.ToolTip (this.components);
 			this.tableLayoutPanel1.SuspendLayout ();
 			this.SuspendLayout ();
@@ -63,6 +64,7 @@
 			this.tableLayoutPanel1.Controls.Add (this.buttonAbout, 0, 2);
 			this.tableLayoutPanel1.Controls.Add (this.checkBoxShowFiles, 0, 1);
 			this.tableLayoutPanel1.Controls.Add (this.checkBoxShowFunctions, 1, 1);
+			this.tableLayoutPanel1.Controls.Add (this.comboBoxEditor, 2, 1);
 			this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
 			this.tableLayoutPanel1.Location = new System.Drawing.Point (0, 0);
 			this.tableLayoutPanel1.Name = "tableLayoutPanel1";
@@ -108,7 +110,7 @@
 			this.listView.Location = new System.Drawing.Point (3, 3);
 			this.listView.Name = "listView";
 			this.listView.ShowItemToolTips = true;
-			this.listView.Size = new System.Drawing.Size (736, 215);
+			this.listView.Size = new System.Drawing.Size (736, 211);
 			this.listView.TabIndex = 0;
 			this.toolTips.SetToolTip (this.listView, "Displays the analysis results");
 			this.listView.UseCompatibleStateImageBehavior = false;
@@ -189,9 +191,9 @@
 			this.checkBoxShowFiles.Checked = true;
 			this.checkBoxShowFiles.CheckState = System.Windows.Forms.CheckState.Checked;
 			this.checkBoxShowFiles.Dock = System.Windows.Forms.DockStyle.Fill;
-			this.checkBoxShowFiles.Location = new System.Drawing.Point (3, 224);
+			this.checkBoxShowFiles.Location = new System.Drawing.Point (3, 220);
 			this.checkBoxShowFiles.Name = "checkBoxShowFiles";
-			this.checkBoxShowFiles.Size = new System.Drawing.Size (241, 17);
+			this.checkBoxShowFiles.Size = new System.Drawing.Size (241, 21);
 			this.checkBoxShowFiles.TabIndex = 4;
 			this.checkBoxShowFiles.Text = "Show files";
 			this.checkBoxShowFiles.UseVisualStyleBackColor = true;
@@ -203,13 +205,25 @@
 			this.checkBoxShowFunctions.Checked = true;
 			this.checkBoxShowFunctions.CheckState = System.Windows.Forms.CheckState.Checked;
 			this.checkBoxShowFunctions.Dock = System.Windows.Forms.DockStyle.Fill;
-			this.checkBoxShowFunctions.Location = new System.Drawing.Point (250, 224);
+			this.checkBoxShowFunctions.Location = new System.Drawing.Point (250, 220);
 			this.checkBoxShowFunctions.Name = "checkBoxShowFunctions";
-			this.checkBoxShowFunctions.Size = new System.Drawing.Size (241, 17);
+			this.checkBoxShowFunctions.Size = new System.Drawing.Size (241, 21);
 			this.checkBoxShowFunctions.TabIndex = 5;
 			this.checkBoxShowFunctions.Text = "Show functions";
 			this.checkBoxShowFunctions.UseVisualStyleBackColor = true;
 			this.checkBoxShowFunctions.CheckedChanged += new System.EventHandler (this.checkBoxShowFunctions_CheckedChanged);
+			// 
+			// comboBoxEditor
+			// 
+			this.comboBoxEditor.Dock = System.Windows.Forms.DockStyle.Fill;
+			this.comboBoxEditor.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+			this.comboBoxEditor.FormattingEnabled = true;
+			this.comboBoxEditor.Location = new System.Drawing.Point (497, 220);
+			this.comboBoxEditor.Name = "comboBoxEditor";
+			this.comboBoxEditor.Size = new System.Drawing.Size (242, 21);
+			this.comboBoxEditor.TabIndex = 6;
+			this.toolTips.SetToolTip (this.comboBoxEditor, "Choose an editor to show file contents");
+			this.comboBoxEditor.SelectedIndexChanged += new System.EventHandler (this.comboBoxEditor_SelectedIndexChanged);
 			// 
 			// MainForm
 			// 
@@ -250,5 +264,6 @@
         private System.Windows.Forms.Button buttonShowGroups;
         private System.Windows.Forms.CheckBox checkBoxShowFiles;
         private System.Windows.Forms.CheckBox checkBoxShowFunctions;
+		private System.Windows.Forms.ComboBox comboBoxEditor;
     }
 }
