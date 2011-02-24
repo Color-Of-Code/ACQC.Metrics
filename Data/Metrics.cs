@@ -8,7 +8,7 @@ using System.Xml.Serialization;
 namespace ACQC.Metrics.Data
 {
 
-    public class Metrics : IXmlSerializable
+    public class Metrics : IXmlSerializable, IKiviatElement
     {
         public Metrics(String filename, String name, Int32 position)
         {
@@ -220,5 +220,18 @@ namespace ACQC.Metrics.Data
         }
 
         #endregion
-    }
+
+		public float GetValue (string name)
+		{
+			switch (name)
+			{
+			case "CC": return (float)CC;
+			case "DC": return (float)DC;
+			case "LLOC": return (float)LLOC;
+			case "LLOCi": return (float)LLOCi;
+			case "CARGS": return (float)CARGS;
+			}
+			throw new NotImplementedException ();
+		}
+	}
 }

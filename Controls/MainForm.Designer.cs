@@ -49,22 +49,25 @@
 			this.checkBoxShowFunctions = new System.Windows.Forms.CheckBox ();
 			this.comboBoxEditor = new System.Windows.Forms.ComboBox ();
 			this.toolTips = new System.Windows.Forms.ToolTip (this.components);
+			this.checkBoxShowKiviat = new System.Windows.Forms.CheckBox ();
 			this.tableLayoutPanel1.SuspendLayout ();
 			this.SuspendLayout ();
 			// 
 			// tableLayoutPanel1
 			// 
-			this.tableLayoutPanel1.ColumnCount = 3;
-			this.tableLayoutPanel1.ColumnStyles.Add (new System.Windows.Forms.ColumnStyle (System.Windows.Forms.SizeType.Percent, 33.33333F));
-			this.tableLayoutPanel1.ColumnStyles.Add (new System.Windows.Forms.ColumnStyle (System.Windows.Forms.SizeType.Percent, 33.33333F));
-			this.tableLayoutPanel1.ColumnStyles.Add (new System.Windows.Forms.ColumnStyle (System.Windows.Forms.SizeType.Percent, 33.33333F));
+			this.tableLayoutPanel1.ColumnCount = 4;
+			this.tableLayoutPanel1.ColumnStyles.Add (new System.Windows.Forms.ColumnStyle (System.Windows.Forms.SizeType.Percent, 25F));
+			this.tableLayoutPanel1.ColumnStyles.Add (new System.Windows.Forms.ColumnStyle (System.Windows.Forms.SizeType.Percent, 25F));
+			this.tableLayoutPanel1.ColumnStyles.Add (new System.Windows.Forms.ColumnStyle (System.Windows.Forms.SizeType.Percent, 25F));
+			this.tableLayoutPanel1.ColumnStyles.Add (new System.Windows.Forms.ColumnStyle (System.Windows.Forms.SizeType.Percent, 25F));
+			this.tableLayoutPanel1.Controls.Add (this.checkBoxShowKiviat, 3, 1);
 			this.tableLayoutPanel1.Controls.Add (this.buttonShowGroups, 1, 2);
 			this.tableLayoutPanel1.Controls.Add (this.listView, 0, 0);
-			this.tableLayoutPanel1.Controls.Add (this.buttonClear, 2, 2);
+			this.tableLayoutPanel1.Controls.Add (this.buttonClear, 3, 2);
 			this.tableLayoutPanel1.Controls.Add (this.buttonAbout, 0, 2);
 			this.tableLayoutPanel1.Controls.Add (this.checkBoxShowFiles, 0, 1);
 			this.tableLayoutPanel1.Controls.Add (this.checkBoxShowFunctions, 1, 1);
-			this.tableLayoutPanel1.Controls.Add (this.comboBoxEditor, 2, 1);
+			this.tableLayoutPanel1.Controls.Add (this.comboBoxEditor, 2, 2);
 			this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
 			this.tableLayoutPanel1.Location = new System.Drawing.Point (0, 0);
 			this.tableLayoutPanel1.Name = "tableLayoutPanel1";
@@ -72,6 +75,7 @@
 			this.tableLayoutPanel1.RowStyles.Add (new System.Windows.Forms.RowStyle (System.Windows.Forms.SizeType.Percent, 100F));
 			this.tableLayoutPanel1.RowStyles.Add (new System.Windows.Forms.RowStyle ());
 			this.tableLayoutPanel1.RowStyles.Add (new System.Windows.Forms.RowStyle ());
+			this.tableLayoutPanel1.RowStyles.Add (new System.Windows.Forms.RowStyle (System.Windows.Forms.SizeType.Absolute, 20F));
 			this.tableLayoutPanel1.Size = new System.Drawing.Size (742, 273);
 			this.tableLayoutPanel1.TabIndex = 0;
 			// 
@@ -79,9 +83,9 @@
 			// 
 			this.buttonShowGroups.AutoSize = true;
 			this.buttonShowGroups.Dock = System.Windows.Forms.DockStyle.Fill;
-			this.buttonShowGroups.Location = new System.Drawing.Point (250, 247);
+			this.buttonShowGroups.Location = new System.Drawing.Point (188, 247);
 			this.buttonShowGroups.Name = "buttonShowGroups";
-			this.buttonShowGroups.Size = new System.Drawing.Size (241, 23);
+			this.buttonShowGroups.Size = new System.Drawing.Size (179, 23);
 			this.buttonShowGroups.TabIndex = 3;
 			this.buttonShowGroups.Text = "Show groups";
 			this.buttonShowGroups.UseVisualStyleBackColor = true;
@@ -102,7 +106,7 @@
             this.columnHeader7,
             this.columnHeader8,
             this.columnHeader9});
-			this.tableLayoutPanel1.SetColumnSpan (this.listView, 3);
+			this.tableLayoutPanel1.SetColumnSpan (this.listView, 4);
 			this.listView.Dock = System.Windows.Forms.DockStyle.Fill;
 			this.listView.FullRowSelect = true;
 			this.listView.GridLines = true;
@@ -110,12 +114,13 @@
 			this.listView.Location = new System.Drawing.Point (3, 3);
 			this.listView.Name = "listView";
 			this.listView.ShowItemToolTips = true;
-			this.listView.Size = new System.Drawing.Size (736, 211);
+			this.listView.Size = new System.Drawing.Size (736, 215);
 			this.listView.TabIndex = 0;
 			this.toolTips.SetToolTip (this.listView, "Displays the analysis results");
 			this.listView.UseCompatibleStateImageBehavior = false;
 			this.listView.View = System.Windows.Forms.View.Details;
 			this.listView.ColumnClick += new System.Windows.Forms.ColumnClickEventHandler (this.listView_ColumnClick);
+			this.listView.SelectedIndexChanged += new System.EventHandler (this.listView_SelectedIndexChanged);
 			this.listView.DoubleClick += new System.EventHandler (this.listView_DoubleClick);
 			this.listView.KeyDown += new System.Windows.Forms.KeyEventHandler (this.listView_KeyDown);
 			// 
@@ -164,9 +169,9 @@
 			// 
 			this.buttonClear.AutoSize = true;
 			this.buttonClear.Dock = System.Windows.Forms.DockStyle.Fill;
-			this.buttonClear.Location = new System.Drawing.Point (497, 247);
+			this.buttonClear.Location = new System.Drawing.Point (558, 247);
 			this.buttonClear.Name = "buttonClear";
-			this.buttonClear.Size = new System.Drawing.Size (242, 23);
+			this.buttonClear.Size = new System.Drawing.Size (181, 23);
 			this.buttonClear.TabIndex = 1;
 			this.buttonClear.Text = "Clear";
 			this.toolTips.SetToolTip (this.buttonClear, "Empty the list contents");
@@ -179,7 +184,7 @@
 			this.buttonAbout.Dock = System.Windows.Forms.DockStyle.Fill;
 			this.buttonAbout.Location = new System.Drawing.Point (3, 247);
 			this.buttonAbout.Name = "buttonAbout";
-			this.buttonAbout.Size = new System.Drawing.Size (241, 23);
+			this.buttonAbout.Size = new System.Drawing.Size (179, 23);
 			this.buttonAbout.TabIndex = 2;
 			this.buttonAbout.Text = "About...";
 			this.buttonAbout.UseVisualStyleBackColor = true;
@@ -191,9 +196,9 @@
 			this.checkBoxShowFiles.Checked = true;
 			this.checkBoxShowFiles.CheckState = System.Windows.Forms.CheckState.Checked;
 			this.checkBoxShowFiles.Dock = System.Windows.Forms.DockStyle.Fill;
-			this.checkBoxShowFiles.Location = new System.Drawing.Point (3, 220);
+			this.checkBoxShowFiles.Location = new System.Drawing.Point (3, 224);
 			this.checkBoxShowFiles.Name = "checkBoxShowFiles";
-			this.checkBoxShowFiles.Size = new System.Drawing.Size (241, 21);
+			this.checkBoxShowFiles.Size = new System.Drawing.Size (179, 17);
 			this.checkBoxShowFiles.TabIndex = 4;
 			this.checkBoxShowFiles.Text = "Show files";
 			this.checkBoxShowFiles.UseVisualStyleBackColor = true;
@@ -205,9 +210,9 @@
 			this.checkBoxShowFunctions.Checked = true;
 			this.checkBoxShowFunctions.CheckState = System.Windows.Forms.CheckState.Checked;
 			this.checkBoxShowFunctions.Dock = System.Windows.Forms.DockStyle.Fill;
-			this.checkBoxShowFunctions.Location = new System.Drawing.Point (250, 220);
+			this.checkBoxShowFunctions.Location = new System.Drawing.Point (188, 224);
 			this.checkBoxShowFunctions.Name = "checkBoxShowFunctions";
-			this.checkBoxShowFunctions.Size = new System.Drawing.Size (241, 21);
+			this.checkBoxShowFunctions.Size = new System.Drawing.Size (179, 17);
 			this.checkBoxShowFunctions.TabIndex = 5;
 			this.checkBoxShowFunctions.Text = "Show functions";
 			this.checkBoxShowFunctions.UseVisualStyleBackColor = true;
@@ -218,12 +223,24 @@
 			this.comboBoxEditor.Dock = System.Windows.Forms.DockStyle.Fill;
 			this.comboBoxEditor.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
 			this.comboBoxEditor.FormattingEnabled = true;
-			this.comboBoxEditor.Location = new System.Drawing.Point (497, 220);
+			this.comboBoxEditor.Location = new System.Drawing.Point (373, 247);
 			this.comboBoxEditor.Name = "comboBoxEditor";
-			this.comboBoxEditor.Size = new System.Drawing.Size (242, 21);
+			this.comboBoxEditor.Size = new System.Drawing.Size (179, 21);
 			this.comboBoxEditor.TabIndex = 6;
 			this.toolTips.SetToolTip (this.comboBoxEditor, "Choose an editor to show file contents");
 			this.comboBoxEditor.SelectedIndexChanged += new System.EventHandler (this.comboBoxEditor_SelectedIndexChanged);
+			// 
+			// checkBoxShowKiviat
+			// 
+			this.checkBoxShowKiviat.AutoSize = true;
+			this.checkBoxShowKiviat.Dock = System.Windows.Forms.DockStyle.Fill;
+			this.checkBoxShowKiviat.Location = new System.Drawing.Point (558, 224);
+			this.checkBoxShowKiviat.Name = "checkBoxShowKiviat";
+			this.checkBoxShowKiviat.Size = new System.Drawing.Size (181, 17);
+			this.checkBoxShowKiviat.TabIndex = 7;
+			this.checkBoxShowKiviat.Text = "Show Kiviat";
+			this.checkBoxShowKiviat.UseVisualStyleBackColor = true;
+			this.checkBoxShowKiviat.CheckedChanged += new System.EventHandler (this.checkBoxShowKiviat_CheckedChanged);
 			// 
 			// MainForm
 			// 
@@ -265,5 +282,6 @@
         private System.Windows.Forms.CheckBox checkBoxShowFiles;
         private System.Windows.Forms.CheckBox checkBoxShowFunctions;
 		private System.Windows.Forms.ComboBox comboBoxEditor;
+		private System.Windows.Forms.CheckBox checkBoxShowKiviat;
     }
 }

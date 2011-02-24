@@ -13,10 +13,10 @@ using Microsoft.Win32;
 
 namespace ACQC.Metrics {
 	public partial class MainForm : Form {
-		ListViewGroup listViewGroupFunctions = new ListViewGroup ("Functions", HorizontalAlignment.Left);
-		ListViewGroup listViewGroupFiles = new ListViewGroup ("Files", HorizontalAlignment.Left);
-		ListViewGroup listViewGroupSum = new ListViewGroup ("Summary", HorizontalAlignment.Left);
-		ListViewColumnSorter lvwColumnSorter = new ListViewColumnSorter ();
+		private ListViewGroup listViewGroupFunctions = new ListViewGroup ("Functions", HorizontalAlignment.Left);
+		private ListViewGroup listViewGroupFiles = new ListViewGroup ("Files", HorizontalAlignment.Left);
+		private ListViewGroup listViewGroupSum = new ListViewGroup ("Summary", HorizontalAlignment.Left);
+		private ListViewColumnSorter lvwColumnSorter = new ListViewColumnSorter ();
 
 		public MainForm ()
 		{
@@ -30,6 +30,7 @@ namespace ACQC.Metrics {
 			listView.Groups.Add (listViewGroupFiles);
 			listView.Groups.Add (listViewGroupSum);
 
+			_kiviat.Model = _model;
 			AddEditors ();
 		}
 
@@ -38,6 +39,8 @@ namespace ACQC.Metrics {
 			listView.Items.Clear ();
 			hiddenFiles.Clear ();
 			hiddenFunctions.Clear ();
+			_model.Elements.Clear ();
+			_kiviat.Redraw ();
 		}
 
 		private void MainForm_DragDrop (object sender, DragEventArgs e)
@@ -298,9 +301,8 @@ namespace ACQC.Metrics {
 		private void OpenSourceFile (String filename, int line)
 		{
 			// try to detect notepad++
-			String editorName = comboBoxEditor.SelectedItem.ToString();
-			switch (editorName)
-			{
+			String editorName = comboBoxEditor.SelectedItem.ToString ();
+			switch (editorName) {
 			case EDITOR_NOTEPAD:
 				RegistryKey hklm = Registry.LocalMachine;
 				hklm = hklm.OpenSubKey (@"SOFTWARE\Notepad++");
@@ -319,7 +321,7 @@ namespace ACQC.Metrics {
 				}
 				break;
 			default:
-				Process.Start(filename);
+				Process.Start (filename);
 				break;
 			}
 
@@ -373,9 +375,9 @@ namespace ACQC.Metrics {
 				}
 			}
 
-			Settings.Default.Upgrade();
+			Settings.Default.Upgrade ();
 			String editor = Settings.Default.Editor;
-			if (String.IsNullOrEmpty(editor))
+			if (String.IsNullOrEmpty (editor))
 				editor = EDITOR_DEFAULT;
 			comboBoxEditor.SelectedItem = editor;
 
@@ -384,17 +386,39 @@ namespace ACQC.Metrics {
 
 		private void comboBoxEditor_SelectedIndexChanged (object sender, EventArgs e)
 		{
-			String editorName = comboBoxEditor.SelectedItem.ToString();
-			if (editorName == EDITOR_REQUEST)
-			{
-				Process.Start("mailto:jaap.dehaan@color-of-code.de?subject=ACQC.Metrics, please add support for editor <NAME>");
+			String editorName = comboBoxEditor.SelectedItem.ToString ();
+			if (editorName == EDITOR_REQUEST) {
+				Process.Start ("mailto:jaap.dehaan@color-of-code.de?" +
+					"subject=ACQC.Metrics, please add support for editor <NAME>&" +
+					"body=This is an Email template. Feel free to edit or delete text as appropriate.%0a%0d%0a%0d" +
+					"Editor <NAME> doesn't seem to be supported yet. Please add support for it.%0a%0d" +
+					"Please notify me per EMail as soon as the version containing the support for that editor is available.%0a%0d");
 				comboBoxEditor.SelectedItem = EDITOR_DEFAULT;
-			}
-			else
-			{
+			} else {
 				Settings.Default.Editor = editorName;
-				Settings.Default.Save();
+				Settings.Default.Save ();
 			}
+		}
+
+		private Controls.KiviatForm _kiviat = new Controls.KiviatForm ();
+		private Data.IKiviatModel _model = new Data.MetricsKiviatModel ();
+
+		private void checkBoxShowKiviat_CheckedChanged (object sender, EventArgs e)
+		{
+			if (checkBoxShowKiviat.Checked)
+				_kiviat.Show (this);
+			else
+				_kiviat.Hide ();
+		}
+
+		private void listView_SelectedIndexChanged (object sender, EventArgs e)
+		{
+			_model.Elements.Clear ();
+			foreach (ListViewItem item in listView.SelectedItems) {
+				Data.Metrics metric = item.Tag as Data.Metrics;
+				_model.Elements.Add (metric);
+			}
+			_kiviat.Redraw ();
 		}
 	}
 }
