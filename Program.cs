@@ -12,7 +12,7 @@ namespace ACQC.Metrics
     {
         private static int DoTheJob(String inputFile, TextWriter output)
         {
-            using (Stream fileStream = new FileStream(inputFile, FileMode.Open))
+            using (Stream fileStream = new FileStream(inputFile, FileMode.Open, FileAccess.Read))
             {
                 TextReader input = new StreamReader(fileStream);
                 CppParser parser = new CppParser(input, new FileInfo(inputFile));

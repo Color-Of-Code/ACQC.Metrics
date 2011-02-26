@@ -55,7 +55,7 @@ namespace ACQC.Metrics
         private static readonly String charLiteral = @"'[^\']'";
 
         // Removes all comments and literal strings from the line
-        private static String stripLine(String line, ref Boolean blockComment)
+        private static String StripLine(String line, ref Boolean blockComment)
         {
             String l = line;
             l = Regex.Replace(l, stringLiteral, String.Empty);
@@ -109,7 +109,7 @@ namespace ACQC.Metrics
             else
             {
 
-                String strippedLine = stripLine(line, ref blockComment);
+                String strippedLine = StripLine(line, ref blockComment);
 
                 //if (strippedLine.Contains("CPPUNIT_TEST_SUITE_REGISTRATION"))
                 //{

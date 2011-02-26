@@ -21,7 +21,7 @@ namespace ACQC.Metrics.Helper
                 case ".cc":
                 case ".c++":
                 case ".cpp":
-                    using (Stream fileStream = new FileStream(file.FullName, FileMode.Open))
+                    using (Stream fileStream = new FileStream(file.FullName, FileMode.Open, FileAccess.Read))
                     {
                         TextReader input = new StreamReader(fileStream);
                         IParser parser = new CppParser(input, file);

@@ -304,20 +304,15 @@ namespace ACQC.Metrics {
 			String editorName = comboBoxEditor.SelectedItem.ToString ();
 			switch (editorName) {
 			case EDITOR_NOTEPAD:
-				RegistryKey hklm = Registry.LocalMachine;
-				hklm = hklm.OpenSubKey (@"SOFTWARE\Notepad++");
-				if (hklm != null) {
-					String path = hklm.GetValue (String.Empty, String.Empty) as String;
-					FileInfo f = new FileInfo (Path.Combine (path, "Notepad++.exe"));
-					if (f.Exists) {
-						ProcessStartInfo psi = new ProcessStartInfo ();
-						psi.FileName = f.FullName;
-						psi.Arguments = String.Format ("-n{1} \"{0}\"", filename, line);
+				FileInfo f = GetNotepadPlusPlusPath ();
+				if (f != null && f.Exists) {
+					ProcessStartInfo psi = new ProcessStartInfo ();
+					psi.FileName = f.FullName;
+					psi.Arguments = String.Format ("-n{1} \"{0}\"", filename, line);
 
-						Process notePad = new Process ();
-						notePad.StartInfo = psi;
-						notePad.Start ();
-					}
+					Process notePad = new Process ();
+					notePad.StartInfo = psi;
+					notePad.Start ();
 				}
 				break;
 			default:
@@ -358,6 +353,19 @@ namespace ACQC.Metrics {
 			//<Format>&quot;%e&quot; &quot;%f&quot; -goto:%l,%c</Format>
 		}
 
+		private static FileInfo GetNotepadPlusPlusPath ()
+		{
+			RegistryKey hklm = Registry.LocalMachine;
+			hklm = hklm.OpenSubKey (@"SOFTWARE\Wow6432Node\Notepad++");
+			if (hklm == null)
+				hklm = hklm.OpenSubKey (@"SOFTWARE\Notepad++");
+			if (hklm != null) {
+				String path = hklm.GetValue (String.Empty, String.Empty) as String;
+				return new FileInfo (Path.Combine (path, "Notepad++.exe"));
+			}
+			return null;
+		}
+
 		private const String EDITOR_DEFAULT = "(Default handler)";
 		private const String EDITOR_NOTEPAD = "Notepad++";
 		private const String EDITOR_REQUEST = "Request support for a new editor...";
@@ -365,14 +373,9 @@ namespace ACQC.Metrics {
 		private void AddEditors ()
 		{
 			comboBoxEditor.Items.Add (EDITOR_DEFAULT);
-			RegistryKey hklm = Registry.LocalMachine;
-			hklm = hklm.OpenSubKey (@"SOFTWARE\Notepad++");
-			if (hklm != null) {
-				String path = hklm.GetValue (String.Empty, String.Empty) as String;
-				FileInfo f = new FileInfo (Path.Combine (path, "Notepad++.exe"));
-				if (f.Exists) {
-					comboBoxEditor.Items.Add (EDITOR_NOTEPAD);
-				}
+			FileInfo f = GetNotepadPlusPlusPath ();
+			if (f != null && f.Exists) {
+				comboBoxEditor.Items.Add (EDITOR_NOTEPAD);
 			}
 
 			Settings.Default.Upgrade ();
