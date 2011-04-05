@@ -7,7 +7,7 @@ using System.Xml.Serialization;
 
 namespace ACQC.Metrics {
 	public class ResultCollector : IXmlSerializable {
-		public ResultCollector (TextReader file_name, FileInfo file)
+		public ResultCollector (FileInfo file)
 		{
 			_fileMetrics = new Data.Metrics (file.FullName, file.Name);
 			_functionMetrics = new List<Data.Metrics> ();

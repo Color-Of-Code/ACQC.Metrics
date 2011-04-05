@@ -6,7 +6,7 @@ using System.IO;
 using System.Text.RegularExpressions;
 
 namespace ACQC.Metrics {
-	internal class CppParser : BaseParser {
+	internal class JavaParser : BaseParser {
 		private TokenClass _lastTokenClass;
 		private String _lastToken;
 		private Int32 _braceDepth;
@@ -18,7 +18,7 @@ namespace ACQC.Metrics {
 		private bool multiLineMacro = false;
 
 
-		public CppParser (FileInfo inputFile)
+		public JavaParser (FileInfo inputFile)
 			: base (inputFile)
 		{
 			_braceDepth = 0;

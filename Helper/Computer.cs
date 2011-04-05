@@ -9,6 +9,8 @@ namespace ACQC.Metrics.Helper {
 		static internal ResultCollector Analyze (FileInfo file)
 		{
 			String extension = file.Extension.ToLowerInvariant ();
+
+			IParser parser = null;
 			switch (extension) {
 			case ".h":
 			case ".hh":
@@ -18,18 +20,27 @@ namespace ACQC.Metrics.Helper {
 			case ".cc":
 			case ".c++":
 			case ".cpp":
-				using (Stream fileStream = new FileStream (file.FullName, FileMode.Open, FileAccess.Read)) {
-					TextReader input = new StreamReader (fileStream);
-					IParser parser = new CppParser (input, file);
+				parser = new CppParser (file);
+				break;
 
-					String line;
-					while ((line = input.ReadLine ()) != null) {
-						parser.ParseLine (line);
-					}
-					return parser.Results;
-				}
+			case ".java":
+				parser = new JavaParser (file);
+				break;
+
+			case ".cs":
+				parser = new CsharpParser (file);
+				break;
+
+			default:
+				return null;
 			}
-			return null;
+			return ParseInput (parser);
+		}
+
+		private static ResultCollector ParseInput (IParser parser)
+		{
+			parser.ParseFile ();
+			return parser.Results;
 		}
 	}
 }

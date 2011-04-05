@@ -105,6 +105,9 @@
     <Compile Include="Helper\Computer.cs" />
     <Compile Include="Common\IParser.cs" />
     <Compile Include="Helper\Wildcard.cs" />
+    <Compile Include="Parser\BaseParser.cs" />
+    <Compile Include="Parser\CsharpParser.cs" />
+    <Compile Include="Parser\JavaParser.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Parser\CppParser.cs" />
     <Compile Include="ParserState.cs" />
