@@ -108,6 +108,7 @@
     <Compile Include="Parser\BaseParser.cs" />
     <Compile Include="Parser\CsharpParser.cs" />
     <Compile Include="Parser\JavaParser.cs" />
+    <Compile Include="Parser\PythonParser.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Parser\CppParser.cs" />
     <Compile Include="ParserState.cs" />
@@ -123,9 +124,6 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Application.ico" />
-    <Content Include="Reference.cpp">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
     <Content Include="ReleaseNotes.txt" />
   </ItemGroup>
   <ItemGroup>

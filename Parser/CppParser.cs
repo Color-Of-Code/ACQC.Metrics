@@ -81,13 +81,6 @@ namespace ACQC.Metrics {
 			} else {
 
 				String strippedLine = StripLine (line, ref blockComment);
-
-				//if (strippedLine.Contains("CPPUNIT_TEST_SUITE_REGISTRATION"))
-				//{
-				//    //testFile = true;
-				//    // TODO this information is not used further
-				//}
-
 				if (trimmedLine.Length > 2) {
 					String result = Regex.Replace (line, stringLiteral, String.Empty);
 					if (result.Length > strippedLine.Length) {

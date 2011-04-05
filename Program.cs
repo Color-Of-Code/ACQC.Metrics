@@ -23,6 +23,8 @@ namespace ACQC.Metrics {
 						}
 						return 0;
 					}
+				} else {
+					Console.WriteLine ("File not found: {0}", inputFile.FullName);
 				}
 				return -1;
 			}
@@ -58,7 +60,8 @@ namespace ACQC.Metrics {
 				}
 				return 0;
 			}
-			catch {
+			catch (Exception ex) {
+				Console.WriteLine ("Exception: {0}", ex.Message);
 				return -1;
 			}
 		}

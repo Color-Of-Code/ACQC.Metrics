@@ -1,7 +1,8 @@
 ﻿
 Planned:
 	- improvements to kiviat diagram
-	- support for C#, Java
+	- support for C#, Java, Python, Ruby, Php
+	- make the metric bounds configurable
 	- Port to WPF and background metrics update
 
 1.0.5 - 2011-

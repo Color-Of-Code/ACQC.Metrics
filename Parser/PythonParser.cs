@@ -6,7 +6,7 @@ using System.IO;
 using System.Text.RegularExpressions;
 
 namespace ACQC.Metrics {
-	internal class CsharpParser : BaseParser {
+	internal class PythonParser : BaseParser {
 		private TokenClass _lastTokenClass;
 		private String _lastToken;
 		private Int32 _braceDepth;
@@ -14,11 +14,8 @@ namespace ACQC.Metrics {
 		private Int32 _argumentCount;
 		private ParserState _state;
 		private Statistics _statistics;
-		private bool blockComment = false;
-		private bool multiLineMacro = false;
 
-
-		public CsharpParser (FileInfo inputFile)
+		public PythonParser (FileInfo inputFile)
 			: base (inputFile)
 		{
 			_braceDepth = 0;
@@ -29,42 +26,17 @@ namespace ACQC.Metrics {
 		}
 
 		private static readonly String tokenEx = @"([\w\.:~/]+)|[;,\(\)=\{\}]";
-		private static readonly String lineComment = @"//.*";
-		private static readonly String innerComment = @"/\*.*?\*/";
-		private static readonly String startComment = @"/\*.*";
-		private static readonly String endComment = @".*\*/";
+		private static readonly String lineComment = @"#.*";
 		private static readonly String stringLiteral = @"""(\\""|[^""])*""";
 		private static readonly String charLiteral = @"'[^\']'";
 
 		// Removes all comments and literal strings from the line
-		private static String StripLine (String line, ref Boolean blockComment)
+		private static String StripLine (String line)
 		{
 			String l = line;
 			l = Regex.Replace (l, stringLiteral, String.Empty);
 			l = Regex.Replace (l, charLiteral, String.Empty);
-
-			if (!blockComment) {
-				l = Regex.Replace (l, lineComment, String.Empty);
-				l = Regex.Replace (l, innerComment, String.Empty);
-				if (l.Contains ("/*")) {
-					l = Regex.Replace (l, startComment, String.Empty);
-					blockComment = true;
-				}
-			} else {
-				if (l.Contains ("*/")) {
-					l = Regex.Replace (l, innerComment, String.Empty);
-					l = Regex.Replace (l, endComment, String.Empty);
-					blockComment = false;
-					l = Regex.Replace (l, lineComment, String.Empty);
-					if (l.Contains ("/*")) {
-						l = Regex.Replace (l, startComment, String.Empty);
-						blockComment = true;
-					}
-				} else {
-					l = String.Empty;
-				}
-			}
-
+			l = Regex.Replace (l, lineComment, String.Empty);
 			return l;
 		}
 
@@ -80,7 +52,13 @@ namespace ACQC.Metrics {
 				_collector.IncrementLLOW ();
 			} else {
 
-				String strippedLine = StripLine (line, ref blockComment);
+				String strippedLine = StripLine (line);
+
+				//if (strippedLine.Contains("CPPUNIT_TEST_SUITE_REGISTRATION"))
+				//{
+				//    //testFile = true;
+				//    // TODO this information is not used further
+				//}
 
 				if (trimmedLine.Length > 2) {
 					String result = Regex.Replace (line, stringLiteral, String.Empty);
@@ -93,13 +71,6 @@ namespace ACQC.Metrics {
 						//std::cout << line << std::endl;
 						_collector.IncrementLLOC ();
 					}
-				}
-
-				// Macros are ignored
-				if (!strippedLine.Contains ('#') && !multiLineMacro) {
-					ParseString (strippedLine);
-				} else {
-					multiLineMacro = strippedLine.EndsWith (@"\");
 				}
 			}
 		}

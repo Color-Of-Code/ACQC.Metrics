@@ -398,11 +398,9 @@ namespace ACQC.Metrics {
 				break;
 
 			case "try":
-			case "__try":
 				result = TokenClass.K_try;
 				break;
 			case "catch":
-			case "__except":
 				result = TokenClass.K_catch;
 				break;
 			case "throw":
@@ -439,16 +437,6 @@ namespace ACQC.Metrics {
 				break;
 			case "restrict":
 				result = TokenClass.K_restrict;
-				break;
-
-			case "__cdecl":
-				result = TokenClass.Call_cdecl;
-				break;
-			case "__stdcall":
-				result = TokenClass.Call_stdcall;
-				break;
-			case "__fastcall":
-				result = TokenClass.Call_fastcall;
 				break;
 
 			case "=":

@@ -23,13 +23,17 @@ namespace ACQC.Metrics.Helper {
 				parser = new CppParser (file);
 				break;
 
-			case ".java":
-				parser = new JavaParser (file);
-				break;
+			//case ".java":
+			//    parser = new JavaParser (file);
+			//    break;
 
-			case ".cs":
-				parser = new CsharpParser (file);
-				break;
+			//case ".cs":
+			//    parser = new CsharpParser (file);
+			//    break;
+
+			//case ".py":
+			//    parser = new PythonParser (file);
+			//    break;
 
 			default:
 				return null;

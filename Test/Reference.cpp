@@ -2,14 +2,32 @@
 
 /*
 	This file has
-	93 total lines
-	45 LLOC
-  21 comment lines
-	13 blank lines
+	111 total lines
+	53 LLOC
+  
+    21 comment lines
+	19 blank lines
 	7  procs
 	11 CC
 	6  DC
 */
+
+
+	class cWithOperators
+	{
+	public:
+		bool operator==(const cWithOperators& rhs) const {
+			return ((level == rhs.level) && (id == rhs.id));
+		}
+
+		bool operator!=(const cWithOperators& rhs) const {
+			return !operator==(rhs);
+		}
+
+		int level;
+		unsigned long id;
+	};
+
 
 /***** this is a one line block comment *****/
 /* embracing comment */ int k; /*embracing comment*/
