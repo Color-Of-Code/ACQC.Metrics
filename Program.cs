@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.IO;
+using System.Xml;
 using System.Text.RegularExpressions;
 using System.Windows.Forms;
 
@@ -10,18 +11,20 @@ namespace ACQC.Metrics {
 	class Program {
 		private static int DoTheJob (String inputFileName, TextWriter output)
 		{
-			using (Stream fileStream = new FileStream (inputFileName, FileMode.Open, FileAccess.Read)) {
-				TextReader input = new StreamReader (fileStream);
-				CppParser parser = new CppParser (input, new FileInfo (inputFileName));
-
-				String line;
-				while ((line = input.ReadLine ()) != null) {
-					parser.ParseLine (line);
-				}
-
-				parser.WriteResults (output);
-			}
+			FileInfo inputFile = new FileInfo (inputFileName);
+			var results = Helper.Computer.Analyze (inputFile);
+			WriteResults (results, output);
 			return 0;
+		}
+
+		private static void WriteResults (ResultCollector results, TextWriter output)
+		{
+			XmlWriterSettings settings = new XmlWriterSettings ();
+			settings.Indent = true;
+			settings.Encoding = Encoding.UTF8;
+			using (XmlWriter writer = XmlWriter.Create (output, settings)) {
+				results.WriteXml (writer);
+			}
 		}
 
 		private static void ParseParameters (String[] parameters, ref String filenameIn, ref String filenameOut)
@@ -34,6 +37,11 @@ namespace ACQC.Metrics {
 					if (option == "-?" || option == "-h" || option == "--help") {
 						DumpHelp ();
 						option = null;
+					} else if (option == "-o") {
+						// ok
+					} else {
+						OutputOptionError (ref filenameIn, ref filenameOut, option);
+						return;
 					}
 				} else {
 					if (option == "-o") {
@@ -41,21 +49,30 @@ namespace ACQC.Metrics {
 					} else if (option == null) {
 						filenameIn = parameter;
 					} else {
-						Console.Error.WriteLine ("Unknown command line option {0}", option);
-						DumpHelp ();
+						OutputOptionError (ref filenameIn, ref filenameOut, option);
+						return;
 					}
 					option = null;
 				}
 			}
 		}
 
+		private static void OutputOptionError (ref String filenameIn, ref String filenameOut, String option)
+		{
+			Console.Error.WriteLine ("Unknown command line option {0}\n", option);
+			DumpHelp ();
+			filenameIn = null;
+			filenameOut = null;
+		}
+
 		private static void DumpHelp ()
 		{
 			Console.Out.WriteLine ("Usage:");
-			Console.Out.WriteLine ("{0} [- options] <c or c++ file>", "metrics");
+			Console.Out.WriteLine ("{0} [- options] <c or c++ files>", "metrics");
 			Console.Out.WriteLine ("{0} [- options] <directory>", "metrics");
 			Console.Out.WriteLine (" -o <output xml file>");
-			Console.Out.WriteLine ("The program dumps the results out to the console or given file.");
+			Console.Out.WriteLine (" files can be specified using wildcards (e.g: dir\\*.cpp)");
+			Console.Out.WriteLine ("The program dumps the results out to the console or into a specified XML file.");
 		}
 
 		//debug arguments: -o metrics.xml Reference.cpp

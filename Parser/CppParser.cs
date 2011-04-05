@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.IO;
-using System.Xml;
 using System.Text.RegularExpressions;
 
 namespace ACQC.Metrics
@@ -30,17 +29,6 @@ namespace ACQC.Metrics
             _state = ParserState.START;
             _lastToken = String.Empty;
             _lastTokenClass = TokenClass.Identifier;
-        }
-
-        public void WriteResults(TextWriter output)
-        {
-            XmlWriterSettings settings = new XmlWriterSettings();
-            settings.Indent = true;
-            settings.Encoding = Encoding.UTF8;
-            using (XmlWriter writer = XmlWriter.Create(output, settings))
-            {
-                _collector.WriteXml(writer);
-            }
         }
 
         public ResultCollector Results
