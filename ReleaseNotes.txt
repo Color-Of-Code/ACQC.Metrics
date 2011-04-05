@@ -4,6 +4,10 @@ Planned:
 	- support for C#, Java
 	- Port to WPF and background metrics update
 
+1.0.5 - 2011-
+	- Fixed crash on start due to the detection of Notepad++
+	- Extension of the command line support
+	
 1.0.4 - 2011-02-26
 	- fixed opening of read-only files
     - added license text into GUI
