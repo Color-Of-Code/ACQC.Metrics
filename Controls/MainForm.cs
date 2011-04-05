@@ -356,11 +356,12 @@ namespace ACQC.Metrics {
 		private static FileInfo GetNotepadPlusPlusPath ()
 		{
 			RegistryKey hklm = Registry.LocalMachine;
-			hklm = hklm.OpenSubKey (@"SOFTWARE\Wow6432Node\Notepad++");
-			if (hklm == null)
-				hklm = hklm.OpenSubKey (@"SOFTWARE\Notepad++");
-			if (hklm != null) {
-				String path = hklm.GetValue (String.Empty, String.Empty) as String;
+			RegistryKey hklmNp = null;
+			hklmNp = hklm.OpenSubKey (@"SOFTWARE\Wow6432Node\Notepad++");
+			if (hklmNp == null)
+				hklmNp = hklm.OpenSubKey (@"SOFTWARE\Notepad++");
+			if (hklmNp != null) {
+				String path = hklmNp.GetValue (String.Empty, String.Empty) as String;
 				return new FileInfo (Path.Combine (path, "Notepad++.exe"));
 			}
 			return null;
