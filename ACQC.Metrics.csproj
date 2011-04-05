@@ -104,6 +104,7 @@
     <Compile Include="Data\MetricsKiviatModel.cs" />
     <Compile Include="Helper\Computer.cs" />
     <Compile Include="Common\IParser.cs" />
+    <Compile Include="Helper\Wildcard.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Parser\CppParser.cs" />
     <Compile Include="ParserState.cs" />

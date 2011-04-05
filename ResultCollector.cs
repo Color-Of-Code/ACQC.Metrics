@@ -157,7 +157,8 @@ namespace ACQC.Metrics {
 		public void WriteXml (System.Xml.XmlWriter writer)
 		{
 			writer.WriteStartElement ("Metrics");
-
+			if (_fileMetrics.Filename != null)
+				writer.WriteAttributeString ("File", _fileMetrics.Filename);
 			writer.WriteStartElement ("File");
 			_fileMetrics.WriteXml (writer);
 			writer.WriteEndElement ();

@@ -6,7 +6,7 @@ Planned:
 
 1.0.5 - 2011-
 	- Fixed crash on start due to the detection of Notepad++
-	- Extension of the command line support
+	- Extension of the command line support, support of wildcards, several source files per XML
 	
 1.0.4 - 2011-02-26
 	- fixed opening of read-only files

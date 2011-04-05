@@ -11,20 +11,81 @@ namespace ACQC.Metrics {
 	class Program {
 		private static int DoTheJob (String inputFileName, TextWriter output)
 		{
-			FileInfo inputFile = new FileInfo (inputFileName);
-			var results = Helper.Computer.Analyze (inputFile);
-			WriteResults (results, output);
-			return 0;
+			try {
+				FileInfo inputFile = new FileInfo (inputFileName);
+				if (inputFile.Exists) {
+					var results = Helper.Computer.Analyze (inputFile);
+					if (results != null) {
+						using (XmlWriter writer = CreateXmlWriter (output)) {
+							WriteHeader (writer);
+							WriteResults (results, writer);
+							WriteFooter (writer);
+						}
+						return 0;
+					}
+				}
+				return -1;
+			}
+			catch (ArgumentException ex) {
+				// illegal chars in path are the sign that it is probaby a
+				// job with wildcards.
+				var substitutedArg = Environment.ExpandEnvironmentVariables (inputFileName);
+
+				var dirPart = Path.GetDirectoryName (substitutedArg);
+				if (dirPart.Length == 0)
+					dirPart = ".";
+
+				var wildcard = new Helper.Wildcard (substitutedArg);
+				//var filePart = Path.GetFileName (substitutedArg);
+
+				using (XmlWriter writer = CreateXmlWriter (output)) {
+					WriteHeader (writer);
+					foreach (string file in Directory.GetFiles (dirPart, "*.*", SearchOption.AllDirectories)) {
+						if (wildcard.IsMatch (file)) {
+							FileInfo inputFile = new FileInfo (file);
+							if (inputFile.Exists) {
+								var results = Helper.Computer.Analyze (inputFile);
+								if (results != null) {
+									WriteResults (results, writer);
+								}
+							} else {
+								Console.WriteLine ("File not found: {0}", file);
+							}
+
+						}
+					}
+					WriteFooter (writer);
+				}
+				return 0;
+			}
+			catch {
+				return -1;
+			}
 		}
 
-		private static void WriteResults (ResultCollector results, TextWriter output)
+		private static void WriteFooter (XmlWriter writer)
+		{
+			writer.WriteEndElement ();
+		}
+
+		private static void WriteHeader (XmlWriter writer)
+		{
+			writer.WriteStartElement ("ACQC");
+			writer.WriteAttributeString ("Timestamp", DateTime.Now.ToString ("O"));
+		}
+
+		private static XmlWriter CreateXmlWriter (TextWriter output)
 		{
 			XmlWriterSettings settings = new XmlWriterSettings ();
 			settings.Indent = true;
 			settings.Encoding = Encoding.UTF8;
-			using (XmlWriter writer = XmlWriter.Create (output, settings)) {
-				results.WriteXml (writer);
-			}
+			XmlWriter writer = XmlWriter.Create (output, settings);
+			return writer;
+		}
+
+		private static void WriteResults (ResultCollector results, XmlWriter writer)
+		{
+			results.WriteXml (writer);
 		}
 
 		private static void ParseParameters (String[] parameters, ref String filenameIn, ref String filenameOut)
@@ -103,7 +164,6 @@ namespace ACQC.Metrics {
 
 		private static int RunClTool (String[] parameters)
 		{
-
 			String filenameIn = null;
 			String filenameOut = null;
 			ParseParameters (parameters, ref filenameIn, ref filenameOut);
