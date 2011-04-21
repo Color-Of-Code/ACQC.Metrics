@@ -109,6 +109,7 @@
     <Compile Include="Parser\CsharpParser.cs" />
     <Compile Include="Parser\JavaParser.cs" />
     <Compile Include="Parser\PythonParser.cs" />
+    <Compile Include="Parser\State.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Parser\CppParser.cs" />
     <Compile Include="ParserState.cs" />

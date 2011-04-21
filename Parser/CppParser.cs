@@ -68,37 +68,40 @@ namespace ACQC.Metrics {
 			return l;
 		}
 
-		public override void ParseLine (String line)
+		public override void ParseText (TextReader reader)
 		{
-			_collector.IncrementLINES ();
+			String line;
+			while ((line = reader.ReadLine ()) != null) {
+				_collector.IncrementLINES ();
 
-			// Trim the line of all whitespace
-			String trimmedLine = line.Trim ();
+				// Trim the line of all whitespace
+				String trimmedLine = line.Trim ();
 
-			// if everything was removed, this was a line of whitespaces
-			if (String.IsNullOrEmpty (trimmedLine)) {
-				_collector.IncrementLLOW ();
-			} else {
-
-				String strippedLine = StripLine (line, ref blockComment);
-				if (trimmedLine.Length > 2) {
-					String result = Regex.Replace (line, stringLiteral, String.Empty);
-					if (result.Length > strippedLine.Length) {
-						// Some comment was present in the line and removed
-						_collector.IncrementLLOCi ();
-					}
-					if (strippedLine.Length > 2) {
-						// Some code is left
-						//std::cout << line << std::endl;
-						_collector.IncrementLLOC ();
-					}
-				}
-
-				// Macros are ignored
-				if (!strippedLine.Contains ('#') && !multiLineMacro) {
-					ParseString (strippedLine);
+				// if everything was removed, this was a line of whitespaces
+				if (String.IsNullOrEmpty (trimmedLine)) {
+					_collector.IncrementLLOW ();
 				} else {
-					multiLineMacro = strippedLine.EndsWith (@"\");
+
+					String strippedLine = StripLine (line, ref blockComment);
+					if (trimmedLine.Length > 2) {
+						String result = Regex.Replace (line, stringLiteral, String.Empty);
+						if (result.Length > strippedLine.Length) {
+							// Some comment was present in the line and removed
+							_collector.IncrementLLOCi ();
+						}
+						if (strippedLine.Length > 2) {
+							// Some code is left
+							//std::cout << line << std::endl;
+							_collector.IncrementLLOC ();
+						}
+					}
+
+					// Macros are ignored
+					if (!strippedLine.Contains ('#') && !multiLineMacro) {
+						ParseString (strippedLine);
+					} else {
+						multiLineMacro = strippedLine.EndsWith (@"\");
+					}
 				}
 			}
 		}
