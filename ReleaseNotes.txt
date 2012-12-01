@@ -4,6 +4,58 @@ Planned:
 	- support for C#, Java, Python, Ruby, Php
 	- make the metric bounds configurable
 	- Port to WPF and background metrics update
+	- Implement Maintainability index: http://blogs.msdn.com/b/codeanalysis/archive/2007/11/20/maintainability-index-range-and-meaning.aspx
+	
+	Maintainability Index = MAX(0,(171 - 5.2 * ln(Halstead Volume) - 0.23 * (Cyclomatic Complexity) - 16.2 * ln(Lines of Code))*100 / 171)
+	0-9 = Red
+	10-19 = Yellow
+	20-100 = Green
+	
+
+
+I tried to run ACQC from the command line within a script and caused a crash.
+
+ 
+
+ 
+
+Calling it for each file (as in the example on the website) works:
+
+%TOOLSDIR%\acqc\ACQC.Metrics.exe -o %OUTDIR%\acqcOutput.xml %SRCDIR%\main.c
+
+                Stepping through a list of files in a batch script has the problem of giving multiple metric reports for multiple files and inserts performance issues
+
+ 
+
+Using a list of wildcards causes a crash:
+
+%TOOLSDIR%\acqc\ACQC.Metrics.exe -o %OUTDIR%\acqcOutput.xml %FILES%
+
+ 
+
+This file list CAN be used with cccc (http://sourceforge.net/projects/cccc/) and is defined as:
+
+SET C_FILES= %SRCDIR%\*.c %SRCDIR%\driver\*.c %SRCDIR%\states\*.c %SRCDIR%\signals\in\*.c %SRCDIR%\signals\out\*.c
+
+SET H_FILES= %SRCDIR%\*.h %SRCDIR%\driver\*.h %SRCDIR%\states\*.h %SRCDIR%\signals\in\*.h %SRCDIR%\signals\out\*.h
+
+SET FILES= %C_FILES% %H_FILES%
+
+ 
+
+ 
+
+It would be nice to have one report for a whole SW-project, so ACQC should
+
+-          accept multiple files and multiple wildcards (so it is easy to use it together with cccc)
+
+OR
+
+-          enable a recursive checking mode from a starting directory (as ACQC does when I drag and drop a directory in the GUI)
+
+ 
+
+ 
 
 1.0.5 - 2011-
 	- Fixed crash on start due to the detection of Notepad++

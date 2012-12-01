@@ -3,8 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace ACQC.Metrics.Parser {
-	enum State {
+namespace ACQC.Metrics.Parser
+{
+	enum State
+	{
 		Initial,
 		Litteral,
 		Comment,

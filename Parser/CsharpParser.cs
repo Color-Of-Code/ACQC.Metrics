@@ -5,17 +5,19 @@ using System.Text;
 using System.IO;
 using System.Text.RegularExpressions;
 
-namespace ACQC.Metrics {
-	internal class CsharpParser : BaseParser {
+namespace ACQC.Metrics
+{
+	internal class CsharpParser: BaseParser
+	{
 
-		public CsharpParser (FileInfo inputFile)
-			: base (inputFile)
+		public CsharpParser(FileInfo inputFile)
+			: base(inputFile)
 		{
 		}
 
-		public override void ParseText (TextReader reader)
+		public override void ParseText(TextReader reader)
 		{
-			throw new NotImplementedException ();
+			throw new NotImplementedException();
 		}
 
 	}

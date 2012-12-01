@@ -5,8 +5,10 @@ using System.Text;
 using System.IO;
 using System.Text.RegularExpressions;
 
-namespace ACQC.Metrics {
-	internal class CppParser : BaseParser {
+namespace ACQC.Metrics
+{
+	internal class CppParser: BaseParser
+	{
 		private TokenClass _lastTokenClass;
 		private String _lastToken;
 		private Int32 _braceDepth;
@@ -18,8 +20,8 @@ namespace ACQC.Metrics {
 		private bool multiLineMacro = false;
 
 
-		public CppParser (FileInfo inputFile)
-			: base (inputFile)
+		public CppParser(FileInfo inputFile)
+			: base(inputFile)
 		{
 			_braceDepth = 0;
 			_parenthesisDepth = 0;
@@ -37,30 +39,38 @@ namespace ACQC.Metrics {
 		private static readonly String charLiteral = @"'[^\']'";
 
 		// Removes all comments and literal strings from the line
-		private static String StripLine (String line, ref Boolean blockComment)
+		private static String StripLine(String line, ref Boolean blockComment)
 		{
 			String l = line;
-			l = Regex.Replace (l, stringLiteral, String.Empty);
-			l = Regex.Replace (l, charLiteral, String.Empty);
+			l = Regex.Replace(l, stringLiteral, String.Empty);
+			l = Regex.Replace(l, charLiteral, String.Empty);
 
-			if (!blockComment) {
-				l = Regex.Replace (l, lineComment, String.Empty);
-				l = Regex.Replace (l, innerComment, String.Empty);
-				if (l.Contains ("/*")) {
-					l = Regex.Replace (l, startComment, String.Empty);
+			if (!blockComment)
+			{
+				l = Regex.Replace(l, lineComment, String.Empty);
+				l = Regex.Replace(l, innerComment, String.Empty);
+				if (l.Contains("/*"))
+				{
+					l = Regex.Replace(l, startComment, String.Empty);
 					blockComment = true;
 				}
-			} else {
-				if (l.Contains ("*/")) {
-					l = Regex.Replace (l, innerComment, String.Empty);
-					l = Regex.Replace (l, endComment, String.Empty);
+			}
+			else
+			{
+				if (l.Contains("*/"))
+				{
+					l = Regex.Replace(l, innerComment, String.Empty);
+					l = Regex.Replace(l, endComment, String.Empty);
 					blockComment = false;
-					l = Regex.Replace (l, lineComment, String.Empty);
-					if (l.Contains ("/*")) {
-						l = Regex.Replace (l, startComment, String.Empty);
+					l = Regex.Replace(l, lineComment, String.Empty);
+					if (l.Contains("/*"))
+					{
+						l = Regex.Replace(l, startComment, String.Empty);
 						blockComment = true;
 					}
-				} else {
+				}
+				else
+				{
 					l = String.Empty;
 				}
 			}
@@ -68,97 +78,111 @@ namespace ACQC.Metrics {
 			return l;
 		}
 
-		public override void ParseText (TextReader reader)
+		public override void ParseText(TextReader reader)
 		{
 			String line;
-			while ((line = reader.ReadLine ()) != null) {
-				_collector.IncrementLINES ();
+			while ((line = reader.ReadLine()) != null)
+			{
+				_collector.IncrementLINES();
 
 				// Trim the line of all whitespace
-				String trimmedLine = line.Trim ();
+				String trimmedLine = line.Trim();
 
 				// if everything was removed, this was a line of whitespaces
-				if (String.IsNullOrEmpty (trimmedLine)) {
-					_collector.IncrementLLOW ();
-				} else {
+				if (String.IsNullOrEmpty(trimmedLine))
+				{
+					_collector.IncrementLLOW();
+				}
+				else
+				{
 
-					String strippedLine = StripLine (line, ref blockComment);
-					if (trimmedLine.Length > 2) {
-						String result = Regex.Replace (line, stringLiteral, String.Empty);
-						if (result.Length > strippedLine.Length) {
+					String strippedLine = StripLine(line, ref blockComment);
+					if (trimmedLine.Length > 2)
+					{
+						String result = Regex.Replace(line, stringLiteral, String.Empty);
+						if (result.Length > strippedLine.Length)
+						{
 							// Some comment was present in the line and removed
-							_collector.IncrementLLOCi ();
+							_collector.IncrementLLOCi();
 						}
-						if (strippedLine.Length > 2) {
+						if (strippedLine.Length > 2)
+						{
 							// Some code is left
 							//std::cout << line << std::endl;
-							_collector.IncrementLLOC ();
+							_collector.IncrementLLOC();
 						}
 					}
 
 					// Macros are ignored
-					if (!strippedLine.Contains ('#') && !multiLineMacro) {
-						ParseString (strippedLine);
-					} else {
-						multiLineMacro = strippedLine.EndsWith (@"\");
+					if (!strippedLine.Contains('#') && !multiLineMacro)
+					{
+						ParseString(strippedLine);
+					}
+					else
+					{
+						multiLineMacro = strippedLine.EndsWith(@"\");
 					}
 				}
 			}
 		}
 
-		private void ParseString (String line)
+		private void ParseString(String line)
 		{
-			MatchCollection results = Regex.Matches (line, tokenEx);
-			foreach (Match match in results) {
-				ProcessToken (match.Value);
+			MatchCollection results = Regex.Matches(line, tokenEx);
+			foreach (Match match in results)
+			{
+				ProcessToken(match.Value);
 			}
 		}
 
-		private void ProcessToken (String token)
+		private void ProcessToken(String token)
 		{
-			TokenClass tclass = getTokenClass (token);
+			TokenClass tclass = getTokenClass(token);
 			//std::cout << collector.getCurrentLine() << "\t" << token << "\t"
 			// << state << "\t" << lastToken << "\t" << depth << std::endl;
 
-			switch (_state) {
+			switch (_state)
+			{
 			case ParserState.START:
-				ParseTokenStart (token, tclass);
+				ParseTokenStart(token, tclass);
 				break;
 			case ParserState.OpenParenthesis:
-				ParseTokenOpenParenthesis (tclass);
+				ParseTokenOpenParenthesis(tclass);
 				break;
 			case ParserState.CloseParenthesis:
-				ParseTokenCloseParenthesis (token, tclass);
+				ParseTokenCloseParenthesis(token, tclass);
 				break;
 			case ParserState.CppFunction:
-				ParseTokenCppFunction (token, tclass);
+				ParseTokenCppFunction(token, tclass);
 				break;
 			case ParserState.Function:
-				ParseTokenCFunction (token, tclass);
+				ParseTokenCFunction(token, tclass);
 				break;
 			case ParserState.Expression:
-				ParseTokenExpression (token, tclass);
+				ParseTokenExpression(token, tclass);
 				break;
 			}
 		}
 
-		private void ParseTokenExpression (String token, TokenClass tclass)
+		private void ParseTokenExpression(String token, TokenClass tclass)
 		{
-			if (tclass == TokenClass.Semicolon) {
+			if (tclass == TokenClass.Semicolon)
+			{
 				_state = ParserState.START;
 				_lastTokenClass = tclass;
 				_lastToken = token;
 			}
 		}
 
-		private void ParseTokenCFunction (String token, TokenClass tclass)
+		private void ParseTokenCFunction(String token, TokenClass tclass)
 		{
-			switch (tclass) {
+			switch (tclass)
+			{
 			case TokenClass.LeftBrace:
 				_state = ParserState.START;
 				_braceDepth++;
 				_statistics.countProcs++;
-				_collector.FunctionEnter (_lastToken, _argumentCount);
+				_collector.FunctionEnter(_lastToken, _argumentCount);
 				_lastTokenClass = tclass;
 				_lastToken = token;
 				break;
@@ -170,14 +194,15 @@ namespace ACQC.Metrics {
 			}
 		}
 
-		private void ParseTokenCppFunction (String token, TokenClass tclass)
+		private void ParseTokenCppFunction(String token, TokenClass tclass)
 		{
-			switch (tclass) {
+			switch (tclass)
+			{
 			case TokenClass.LeftBrace:
 				_state = ParserState.START;
 				_braceDepth++;
 				_statistics.countProcs++;
-				_collector.FunctionEnter (_lastToken, _argumentCount);
+				_collector.FunctionEnter(_lastToken, _argumentCount);
 				_lastTokenClass = tclass;
 				_lastToken = token;
 				break;
@@ -189,9 +214,10 @@ namespace ACQC.Metrics {
 			}
 		}
 
-		private void ParseTokenCloseParenthesis (String token, TokenClass tclass)
+		private void ParseTokenCloseParenthesis(String token, TokenClass tclass)
 		{
-			switch (tclass) {
+			switch (tclass)
+			{
 			case TokenClass.LeftParenthesis:
 				_state = ParserState.OpenParenthesis;
 				break;
@@ -204,11 +230,14 @@ namespace ACQC.Metrics {
 			case TokenClass.LeftBrace:
 				_state = ParserState.START;
 				_braceDepth++;
-				if (_lastTokenClass == TokenClass.Identifier) {	// function found
+				if (_lastTokenClass == TokenClass.Identifier)
+				{	// function found
 					_statistics.countProcs++;
-					_collector.FunctionEnter (_lastToken, _argumentCount);
-				} else {
-					_collector.DepthMore ();
+					_collector.FunctionEnter(_lastToken, _argumentCount);
+				}
+				else
+				{
+					_collector.DepthMore();
 				}
 				_lastTokenClass = tclass;
 				_lastToken = token;
@@ -222,9 +251,11 @@ namespace ACQC.Metrics {
 				if (_lastTokenClass == TokenClass.Identifier &&
 					_braceDepth == 0 &&
 					_lastToken != "__declspec") // Fix
-                    {
+				{
 					_state = ParserState.Function;
-				} else {
+				}
+				else
+				{
 					_state = ParserState.START;
 					_lastTokenClass = tclass;
 					_lastToken = token;
@@ -233,11 +264,13 @@ namespace ACQC.Metrics {
 			}
 		}
 
-		private void ParseTokenOpenParenthesis (TokenClass tclass)
+		private void ParseTokenOpenParenthesis(TokenClass tclass)
 		{
-			switch (tclass) {
+			switch (tclass)
+			{
 			case TokenClass.Colon:
-				if (_parenthesisDepth == 0) {
+				if (_parenthesisDepth == 0)
+				{
 					_argumentCount++;
 				}
 				break;
@@ -245,15 +278,20 @@ namespace ACQC.Metrics {
 				_parenthesisDepth++;
 				break;
 			case TokenClass.RightParenthesis:
-				if (_parenthesisDepth == 0) {
+				if (_parenthesisDepth == 0)
+				{
 					_state = ParserState.CloseParenthesis;
-				} else {
+				}
+				else
+				{
 					_parenthesisDepth--;
 				}
 				break;
 			default:
-				if (tclass != TokenClass.T_void) {
-					if (_argumentCount == 0) {
+				if (tclass != TokenClass.T_void)
+				{
+					if (_argumentCount == 0)
+					{
 						_argumentCount = 1;
 					}
 				}
@@ -261,31 +299,39 @@ namespace ACQC.Metrics {
 			}
 		}
 
-		private void ParseTokenStart (String token, TokenClass tclass)
+		private void ParseTokenStart(String token, TokenClass tclass)
 		{
-			switch (tclass) {
+			switch (tclass)
+			{
 			case TokenClass.LeftBrace:
-				if (_braceDepth > 0) {
-					if (_lastTokenClass == TokenClass.K_try) {
+				if (_braceDepth > 0)
+				{
+					if (_lastTokenClass == TokenClass.K_try)
+					{
 						_statistics.countTry++;
-					} else if (_lastTokenClass == TokenClass.K_do) {
+					}
+					else if (_lastTokenClass == TokenClass.K_do)
+					{
 						_statistics.countCCx += _braceDepth;
-						_collector.Construct ();
+						_collector.Construct();
 
 						_statistics.countDo++;
 					}
 					_braceDepth++;
-					_collector.DepthMore ();
+					_collector.DepthMore();
 				}
 				// else must be start of toplevel namespace or class construct	
 				break;
 			case TokenClass.RightBrace:
-				if (_braceDepth == 1) { // end of function
+				if (_braceDepth == 1)
+				{ // end of function
 					_braceDepth--;
-					_collector.FunctionLeave ();
-				} else if (_braceDepth > 1) {
+					_collector.FunctionLeave();
+				}
+				else if (_braceDepth > 1)
+				{
 					_braceDepth--;
-					_collector.DepthLess ();
+					_collector.DepthLess();
 				}
 				// else must be end of toplevel namespace or class construct
 				break;
@@ -293,19 +339,20 @@ namespace ACQC.Metrics {
 				_state = ParserState.OpenParenthesis;
 				_argumentCount = 0;
 				_parenthesisDepth = 0;
-				switch (_lastTokenClass) {
+				switch (_lastTokenClass)
+				{
 				case TokenClass.K_if:
-					_collector.Construct ();
+					_collector.Construct();
 					_statistics.countIf++;
 					_statistics.countCCx += _braceDepth;
 					break;
 				case TokenClass.K_for:
-					_collector.Construct ();
+					_collector.Construct();
 					_statistics.countFor++;
 					_statistics.countCCx += _braceDepth;
 					break;
 				case TokenClass.K_while:
-					_collector.Construct ();
+					_collector.Construct();
 					_statistics.countWhile++;
 					_statistics.countCCx += _braceDepth;
 					break;
@@ -313,7 +360,7 @@ namespace ACQC.Metrics {
 					_statistics.countSwitch++;
 					break;
 				case TokenClass.K_catch:
-					_collector.Construct ();
+					_collector.Construct();
 					_statistics.countCatch++;
 					_statistics.countCCx += _braceDepth;
 					break;
@@ -322,7 +369,7 @@ namespace ACQC.Metrics {
 				}
 				break;
 			case TokenClass.K_case:
-				_collector.Construct ();
+				_collector.Construct();
 				_statistics.countCase++;
 				_statistics.countCCx += _braceDepth;
 				break;
@@ -337,17 +384,18 @@ namespace ACQC.Metrics {
 		}
 
 
-		public Statistics getStatistics ()
+		public Statistics getStatistics()
 		{
 			_statistics.countCC = _statistics.countDo + _statistics.countIf + _statistics.countFor + _statistics.countProcs +
 				_statistics.countCase + _statistics.countCatch + _statistics.countWhile;
 			return _statistics;
 		}
 
-		public TokenClass getTokenClass (String token)
+		public TokenClass getTokenClass(String token)
 		{
 			TokenClass result = TokenClass.Identifier;
-			switch (token) {
+			switch (token)
+			{
 			case "...":
 				result = TokenClass.Ellipsis;
 				break;
