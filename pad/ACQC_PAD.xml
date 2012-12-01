@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <XML_DIZ_INFO>
 	<MASTER_PAD_VERSION_INFO>
-		<MASTER_PAD_VERSION>3.10</MASTER_PAD_VERSION>
-		<MASTER_PAD_EDITOR>PADGen 3.1.0.41 http://www.padgen.org</MASTER_PAD_EDITOR>
-		<MASTER_PAD_INFO>Portable Application Description, or PAD for short, is a data set that is used by shareware authors to disseminate information to anyone interested in their software products. To find out more go to http://www.asp-shareware.org/pad</MASTER_PAD_INFO>
+		<MASTER_PAD_VERSION>3.11</MASTER_PAD_VERSION>
+		<MASTER_PAD_EDITOR>PADGen 3.1.1.50 http://www.padgen.org</MASTER_PAD_EDITOR>
+		<MASTER_PAD_INFO>Portable Application Description, or PAD for short, is a data set that is used by shareware authors to disseminate information to anyone interested in their software products. To find out more go to http://pad.asp-software.org</MASTER_PAD_INFO>
 	</MASTER_PAD_VERSION_INFO>
 	<Company_Info>
 		<Company_Name>Color of Code</Company_Name>
@@ -34,10 +34,10 @@
 	</Company_Info>
 	<Program_Info>
 		<Program_Name>ACQC Metrics</Program_Name>
-		<Program_Version>1.04</Program_Version>
-		<Program_Release_Month>02</Program_Release_Month>
-		<Program_Release_Day>26</Program_Release_Day>
-		<Program_Release_Year>2011</Program_Release_Year>
+		<Program_Version>1.06</Program_Version>
+		<Program_Release_Month>12</Program_Release_Month>
+		<Program_Release_Day>01</Program_Release_Day>
+		<Program_Release_Year>2012</Program_Release_Year>
 		<Program_Cost_Dollars />
 		<Program_Cost_Other_Code />
 		<Program_Cost_Other />
@@ -51,8 +51,8 @@
 		<Program_Category_Class>Development::C / C++ / C#</Program_Category_Class>
 		<Program_System_Requirements>.NET 3.5</Program_System_Requirements>
 		<File_Info>
-			<File_Size_Bytes>77880</File_Size_Bytes>
-			<File_Size_K>76</File_Size_K>
+			<File_Size_Bytes>77603</File_Size_Bytes>
+			<File_Size_K>75</File_Size_K>
 			<File_Size_MB>0.07</File_Size_MB>
 		</File_Info>
 		<Expire_Info>
@@ -71,7 +71,7 @@
 			<Char_Desc_45>Compute source code metrics</Char_Desc_45>
 			<Char_Desc_80>ACQC Metrics computes typical source code file and function metrics.</Char_Desc_80>
 			<Char_Desc_250>ACQC Metrics computes typical source code file and function metrics by just dragging and dropping files on its main window. Metrics are then computed and displayed in a list. The contents of the lists can be copied and pasted.</Char_Desc_250>
-			<Char_Desc_450>ACQC Metrics computes typical source code file and function metrics. What are metrics good for? Well, it measures the software in terms of complexity for example. Very long or complex functions can be identified in order to break them down in smaller pieces (for better maintainability). Maybe you are also just interested in knowing how big your software currently is, then ACQC metrics is also good for you.</Char_Desc_450>
+			<Char_Desc_450>ACQC Metrics computes typical source code file and function metrics. What are metrics good for? Well, it measures the software in terms of complexity for example. Very long or complex functions can be identified in order to break them down in smaller pieces (for better maintainability). Maybe you are also just interested in knowing of big your software currently is, then ACQC metrics is also good for you.</Char_Desc_450>
 			<Char_Desc_2000>ACQC Metrics computes typical source code file and function metrics. What are metrics good for? Well, it measures the software in terms of complexity for example. Very long or complex functions can be identified in order to break them down in smaller pieces (for better maintainability). Maybe you are also just interested in knowing of big the software currently is, then ACQC metrics is also good for you.
 
 Just drag &amp; drop files on its main window. Metrics are then computed and displayed in a list. The contents of the lists can be copied and pasted.
@@ -102,7 +102,7 @@ The tool doesn't need any setup and does not modify your registry. The only prer
 			<Application_XML_File_URL>http://www.color-of-code.de/images/acqc/ACQC_PAD.xml</Application_XML_File_URL>
 		</Application_URLs>
 		<Download_URLs>
-			<Primary_Download_URL>http://www.color-of-code.de/images/acqc/ACQC-Metrics-1.1.0.zip</Primary_Download_URL>
+			<Primary_Download_URL>http://www.color-of-code.de/images/acqc/ACQC-Metrics-1.0.6.zip</Primary_Download_URL>
 			<Secondary_Download_URL>http://www.color-of-code.de/images/acqc/ACQC-Metrics.zip</Secondary_Download_URL>
 			<Additional_Download_URL_1 />
 			<Additional_Download_URL_2 />
@@ -129,7 +129,7 @@ o If you distribute the software as part of a publication (magazine,
 </Distribution_Permissions>
 		<EULA>FREEWARE SOFTWARE LICENSE AGREEMENT 
 
-Copyright 2010-2011 Jaap de Haan, http://www.color-of-code.de 
+Copyright 2010-2012 Jaap de Haan, http://www.color-of-code.de 
 
 NOTICE TO USER: 
 
@@ -246,7 +246,7 @@ END OF LICENSE AGREEMENT
 	<Affiliates>
 		<Affiliates_FORM>Y</Affiliates_FORM>
 		<Affiliates_VERSION>1.4</Affiliates_VERSION>
-		<Affiliates_URL>http://www.asp-shareware.org/pad/extensions/Affiliates.htm</Affiliates_URL>
+		<Affiliates_URL>http://pad.asp-software.org/extensions/Affiliates.htm</Affiliates_URL>
 		<Affiliates_Information_Page />
 		<Affiliates_Avangate_Order_Page />
 		<Affiliates_Avangate_Vendor_ID />
@@ -284,6 +284,10 @@ END OF LICENSE AGREEMENT
 		<Affiliates_eSellerate_Vendor_ID />
 		<Affiliates_eSellerate_Product_ID />
 		<Affiliates_eSellerate_Maximum_Commission_Rate />
+		<Affiliates_iPortis_Order_Page />
+		<Affiliates_iPortis_Vendor_ID />
+		<Affiliates_iPortis_Product_ID />
+		<Affiliates_iPortis_Maximum_Commission_Rate />
 		<Affiliates_Kagi_Order_Page />
 		<Affiliates_Kagi_Vendor_ID />
 		<Affiliates_Kagi_Product_ID />

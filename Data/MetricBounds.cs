@@ -3,9 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace ACQC.Metrics.Data {
+namespace ACQC.Metrics.Data
+{
 
-	internal static class MetricBounds {
+    internal static class MetricBounds
+    {
 
         #region Limits
         public const int CARGS_MIN = 0;
@@ -27,14 +29,14 @@ namespace ACQC.Metrics.Data {
         public const int LINES_MAX = 300;
         #endregion
 
-		public static Boolean IsOutOfBound(Metrics m)
-		{
-			if (m.CARGS > CARGS_MAX) return true;
-			if (m.LLOC > LLOC_MAX) return true;
-			if (m.CC > CC_MAX) return true;
-			if (m.DC > DC_MAX) return true;
-			if (m.LINES > LINES_MAX) return true;
-			return false;
-		}
-	}
+        public static Boolean IsOutOfBound(Metrics m)
+        {
+            if (m.CARGS > CARGS_MAX) return true;
+            if (m.LLOC > LLOC_MAX) return true;
+            if (m.CC > CC_MAX) return true;
+            if (m.DC > DC_MAX) return true;
+            if (m.LINES > LINES_MAX) return true;
+            return false;
+        }
+    }
 }

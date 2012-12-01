@@ -4,13 +4,15 @@ using System.IO;
 using System.Linq;
 using System.Text;
 
-namespace ACQC.Metrics {
-	
-	public interface IParser {
-		void ParseText (TextReader reader);
+namespace ACQC.Metrics
+{
 
-		void ParseFile ();
+    public interface IParser
+    {
+        void ParseText(TextReader reader);
 
-		ResultCollector Results { get; }
-	}
+        void ParseFile();
+
+        ResultCollector Results { get; }
+    }
 }
