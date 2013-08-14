@@ -32,8 +32,16 @@ namespace ACQC.Metrics
             listView.Groups.Add(listViewGroupFiles);
             listView.Groups.Add(listViewGroupSum);
 
+            _kiviat = new Controls.KiviatForm();
+            _kiviat.Closing += kiviat_Closing;
             _kiviat.Model = _model;
             AddEditors();
+        }
+
+        private void kiviat_Closing(object sender, CancelEventArgs e)
+        {
+			checkBoxShowKiviat.Checked = false;
+			e.Cancel = true;
         }
 
         private void buttonClear_Click(object sender, EventArgs e)
@@ -446,7 +454,7 @@ namespace ACQC.Metrics
             }
         }
 
-        private Controls.KiviatForm _kiviat = new Controls.KiviatForm();
+        private readonly Controls.KiviatForm _kiviat;
         private Data.IKiviatModel _model = new Data.MetricsKiviatModel();
 
         private void checkBoxShowKiviat_CheckedChanged(object sender, EventArgs e)
