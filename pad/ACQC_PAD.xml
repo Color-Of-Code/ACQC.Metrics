@@ -34,10 +34,10 @@
 	</Company_Info>
 	<Program_Info>
 		<Program_Name>ACQC Metrics</Program_Name>
-		<Program_Version>1.06</Program_Version>
-		<Program_Release_Month>12</Program_Release_Month>
-		<Program_Release_Day>01</Program_Release_Day>
-		<Program_Release_Year>2012</Program_Release_Year>
+		<Program_Version>1.07</Program_Version>
+		<Program_Release_Month>08</Program_Release_Month>
+		<Program_Release_Day>14</Program_Release_Day>
+		<Program_Release_Year>2013</Program_Release_Year>
 		<Program_Cost_Dollars />
 		<Program_Cost_Other_Code />
 		<Program_Cost_Other />
@@ -46,14 +46,14 @@
 		<Program_Install_Support>No Install Support</Program_Install_Support>
 		<Program_OS_Support>Win7 x32,Win7 x64,WinServer,WinVista,WinVista x64,WinXP</Program_OS_Support>
 		<Program_Language>English</Program_Language>
-		<Program_Change_Info>Fixed handling of read-only files, added kiviat diagrams, opening file in editor</Program_Change_Info>
+		<Program_Change_Info>Fixed crash on closing kiviat using the upright cross and trying to show it again</Program_Change_Info>
 		<Program_Specific_Category>Development Tools</Program_Specific_Category>
 		<Program_Category_Class>Development::C / C++ / C#</Program_Category_Class>
 		<Program_System_Requirements>.NET 3.5</Program_System_Requirements>
 		<File_Info>
-			<File_Size_Bytes>77603</File_Size_Bytes>
-			<File_Size_K>75</File_Size_K>
-			<File_Size_MB>0.07</File_Size_MB>
+			<File_Size_Bytes>157470</File_Size_Bytes>
+			<File_Size_K>153</File_Size_K>
+			<File_Size_MB>0.15</File_Size_MB>
 		</File_Info>
 		<Expire_Info>
 			<Has_Expire_Info>N</Has_Expire_Info>
@@ -95,14 +95,14 @@ The tool doesn't need any setup and does not modify your registry. The only prer
 	</Program_Descriptions>
 	<Web_Info>
 		<Application_URLs>
-			<Application_Info_URL>http://www.color-of-code.de/index.php?option=com_content&amp;view=article&amp;id=56&amp;Itemid=64</Application_Info_URL>
-			<Application_Order_URL>http://www.color-of-code.de/index.php?option=com_content&amp;view=article&amp;id=56&amp;Itemid=64</Application_Order_URL>
+			<Application_Info_URL>http://www.color-of-code.de/index.php/products/acqc</Application_Info_URL>
+			<Application_Order_URL>http://www.color-of-code.de/index.php/products/acqc</Application_Order_URL>
 			<Application_Screenshot_URL>http://www.color-of-code.de/images/acqc/acqcmetrics.png</Application_Screenshot_URL>
 			<Application_Icon_URL>http://www.color-of-code.de/images/acqc/acqcmetrics_icon.png</Application_Icon_URL>
 			<Application_XML_File_URL>http://www.color-of-code.de/images/acqc/ACQC_PAD.xml</Application_XML_File_URL>
 		</Application_URLs>
 		<Download_URLs>
-			<Primary_Download_URL>http://www.color-of-code.de/images/acqc/ACQC-Metrics-1.0.6.zip</Primary_Download_URL>
+			<Primary_Download_URL>http://www.color-of-code.de/images/acqc/ACQC-Metrics-1.0.7.zip</Primary_Download_URL>
 			<Secondary_Download_URL>http://www.color-of-code.de/images/acqc/ACQC-Metrics.zip</Secondary_Download_URL>
 			<Additional_Download_URL_1 />
 			<Additional_Download_URL_2 />

@@ -10,7 +10,7 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("Jaap de Haan, www.color-of-code.de")]
 [assembly: AssemblyProduct("ACQC.Metrics")]
-[assembly: AssemblyCopyright("Copyright © Jaap de Haan 2006-2012")]
+[assembly: AssemblyCopyright("Copyright © Jaap de Haan 2006-2013")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
@@ -29,5 +29,5 @@ using System.Runtime.InteropServices;
 //      Build Number
 //      Revision
 //
-[assembly: AssemblyVersion("1.0.6.0")]
-[assembly: AssemblyFileVersion("1.0.6.0")]
+[assembly: AssemblyVersion("1.0.7.0")]
+[assembly: AssemblyFileVersion("1.0.7.0")]

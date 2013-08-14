@@ -53,8 +53,11 @@ OR
 
 -          enable a recursive checking mode from a starting directory (as ACQC does when I drag and drop a directory in the GUI)
 
+	Using https://code.google.com/p/dualsubsystem/ for a cleaner console/GUI dual tool
+	Tried to use this but did not work properly
  
-
+ 1.0.7 - 2013
+	- Fixed crash after closing the kiviat using the upright cross and trying to show the window again
  
 
 1.0.5 - 2011-
