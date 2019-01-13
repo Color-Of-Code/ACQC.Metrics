@@ -8,9 +8,9 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyTitle("ACQC.Metrics")]
 [assembly: AssemblyDescription("Computes Source Code Metrics")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("Jaap de Haan, www.color-of-code.de")]
+[assembly: AssemblyCompany("Jaap de Haan, color-of-code.de")]
 [assembly: AssemblyProduct("ACQC.Metrics")]
-[assembly: AssemblyCopyright("Copyright © Jaap de Haan 2006-2013")]
+[assembly: AssemblyCopyright("Copyright © Jaap de Haan 2006-2019")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 

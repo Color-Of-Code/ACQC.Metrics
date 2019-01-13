@@ -21,7 +21,7 @@ namespace ACQC.Metrics
             this.labelCompanyName.Text = AssemblyCompany;
             linkLabel.Links.Remove(linkLabel.Links[0]);
             linkLabel.Links.Add(0, linkLabel.Text.Length,
-                "http://www.color-of-code.de/index.php?option=com_content&view=article&id=56&Itemid=64");
+                "https://color-of-code.de/");
         }
 
         #region Assembly Attribute Accessors

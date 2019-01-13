@@ -13,7 +13,7 @@
 		<State_Province />
 		<Zip_Postal_Code />
 		<Country>Germany</Country>
-		<Company_WebSite_URL>http://www.color-of-code.de</Company_WebSite_URL>
+		<Company_WebSite_URL>https://color-of-code.de</Company_WebSite_URL>
 		<Contact_Info>
 			<Author_First_Name>Jaap</Author_First_Name>
 			<Author_Last_Name>de Haan</Author_Last_Name>
@@ -95,15 +95,15 @@ The tool doesn't need any setup and does not modify your registry. The only prer
 	</Program_Descriptions>
 	<Web_Info>
 		<Application_URLs>
-			<Application_Info_URL>http://www.color-of-code.de/index.php/products/acqc</Application_Info_URL>
-			<Application_Order_URL>http://www.color-of-code.de/index.php/products/acqc</Application_Order_URL>
-			<Application_Screenshot_URL>http://www.color-of-code.de/images/acqc/acqcmetrics.png</Application_Screenshot_URL>
-			<Application_Icon_URL>http://www.color-of-code.de/images/acqc/acqcmetrics_icon.png</Application_Icon_URL>
-			<Application_XML_File_URL>http://www.color-of-code.de/images/acqc/ACQC_PAD.xml</Application_XML_File_URL>
+			<Application_Info_URL>https://color-of-code.de/index.php/products/acqc</Application_Info_URL>
+			<Application_Order_URL>https://color-of-code.de/index.php/products/acqc</Application_Order_URL>
+			<Application_Screenshot_URL>https://color-of-code.de/images/acqc/acqcmetrics.png</Application_Screenshot_URL>
+			<Application_Icon_URL>https://color-of-code.de/images/acqc/acqcmetrics_icon.png</Application_Icon_URL>
+			<Application_XML_File_URL>https://color-of-code.de/images/acqc/ACQC_PAD.xml</Application_XML_File_URL>
 		</Application_URLs>
 		<Download_URLs>
-			<Primary_Download_URL>http://www.color-of-code.de/images/acqc/ACQC-Metrics-1.0.7.zip</Primary_Download_URL>
-			<Secondary_Download_URL>http://www.color-of-code.de/images/acqc/ACQC-Metrics.zip</Secondary_Download_URL>
+			<Primary_Download_URL>https://color-of-code.de/images/acqc/ACQC-Metrics-1.0.7.zip</Primary_Download_URL>
+			<Secondary_Download_URL>https://color-of-code.de/images/acqc/ACQC-Metrics.zip</Secondary_Download_URL>
 			<Additional_Download_URL_1 />
 			<Additional_Download_URL_2 />
 		</Download_URLs>
@@ -129,7 +129,7 @@ o If you distribute the software as part of a publication (magazine,
 </Distribution_Permissions>
 		<EULA>FREEWARE SOFTWARE LICENSE AGREEMENT 
 
-Copyright 2010-2012 Jaap de Haan, http://www.color-of-code.de 
+Copyright 2010-2012 Jaap de Haan, https://color-of-code.de 
 
 NOTICE TO USER: 
 

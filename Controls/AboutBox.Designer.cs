@@ -161,7 +161,7 @@
 			this.linkLabel.Size = new System.Drawing.Size (388, 13);
 			this.linkLabel.TabIndex = 25;
 			this.linkLabel.TabStop = true;
-			this.linkLabel.Text = "http://www.color-of-code.de";
+			this.linkLabel.Text = "https://color-of-code.de";
 			this.linkLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
 			this.linkLabel.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler (this.linkLabel_LinkClicked);
 			// 
