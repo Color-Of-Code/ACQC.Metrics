@@ -1,23 +1,23 @@
 ﻿using Avalonia;
-using ACQC.Metrics.UI.ViewModels;
-using ACQC.Metrics.UI.Views;
 using Avalonia.ReactiveUI;
+using System;
 
 namespace ACQC.Metrics.UI
 {
     class Program
     {
-        static void Main(string[] args)
-        {
-            BuildAvaloniaApp().Start<MainWindow>(() => new MainWindowViewModel());
-        }
+        // Initialization code. Don't use any Avalonia, third-party APIs or any
+        // SynchronizationContext-reliant code before AppMain is called: things aren't initialized
+        // yet and stuff might break.
+        [STAThread]
+        public static void Main(string[] args) => BuildAvaloniaApp()
+            .StartWithClassicDesktopLifetime(args);
 
+        // Avalonia configuration, don't remove; also used by visual designer.
         public static AppBuilder BuildAvaloniaApp()
-        {
-            return AppBuilder.Configure<App>()
-                        .UsePlatformDetect()
-                        .UseReactiveUI()
-                        .LogToTrace();
-        }
+            => AppBuilder.Configure<App>()
+                .UsePlatformDetect()
+                .LogToTrace()
+                .UseReactiveUI();
     }
 }
