@@ -20,6 +20,7 @@ dotnet_diagnostic.CA1303.severity = none        # literal string, introduce a re
 dotnet_diagnostic.CA1707.severity = none        # _ in method name (common in unit tests)
 # dotnet_diagnostic.CA1062.severity = error       # check for null
 dotnet_analyzer_diagnostic.severity = warning
+csharp_style_namespace_declarations = file_scoped
 
 [*.AssemblyInfo.cs]
 generated_code = true
