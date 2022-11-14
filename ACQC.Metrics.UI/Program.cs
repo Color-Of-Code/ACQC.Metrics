@@ -1,5 +1,4 @@
-﻿using System;
-using Avalonia;
+﻿using Avalonia;
 using Avalonia.Logging.Serilog;
 using ACQC.Metrics.UI.ViewModels;
 using ACQC.Metrics.UI.Views;
@@ -14,9 +13,11 @@ namespace ACQC.Metrics.UI
         }
 
         public static AppBuilder BuildAvaloniaApp()
-            => AppBuilder.Configure<App>()
-                .UsePlatformDetect()
-                .UseReactiveUI()
-                .LogToDebug();
+        {
+            return AppBuilder.Configure<App>()
+                        .UsePlatformDetect()
+                        .UseReactiveUI()
+                        .LogToDebug();
+        }
     }
 }
