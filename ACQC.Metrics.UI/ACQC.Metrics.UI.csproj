@@ -12,9 +12,10 @@
         <Compile Update="**\*.xaml.cs">
             <DependentUpon>%(Filename)</DependentUpon>
         </Compile>
-        <EmbeddedResource Include="**\*.xaml">
+        <Content Include="**\*.xaml" />
+        <AvaloniaResource Include="**\*.xaml">
             <SubType>Designer</SubType>
-        </EmbeddedResource>
+        </AvaloniaResource>
         <EmbeddedResource Include="Assets\*" />
     </ItemGroup>
     <ItemGroup>

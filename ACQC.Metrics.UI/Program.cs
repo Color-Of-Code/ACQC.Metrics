@@ -1,7 +1,7 @@
 ﻿using Avalonia;
-using Avalonia.Logging.Serilog;
 using ACQC.Metrics.UI.ViewModels;
 using ACQC.Metrics.UI.Views;
+using Avalonia.ReactiveUI;
 
 namespace ACQC.Metrics.UI
 {
@@ -17,7 +17,7 @@ namespace ACQC.Metrics.UI
             return AppBuilder.Configure<App>()
                         .UsePlatformDetect()
                         .UseReactiveUI()
-                        .LogToDebug();
+                        .LogToTrace();
         }
     }
 }
