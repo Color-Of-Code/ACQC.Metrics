@@ -6,7 +6,7 @@ using static LanguageExt.Prelude;
 
 namespace ACQC.Metrics.Core.Parsers;
 
-public static partial class Parsers
+public static partial class LanguageParsers
 {
     public static Parser<FileMetadata> JavascriptParser()
     {

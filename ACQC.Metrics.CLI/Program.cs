@@ -1,14 +1,14 @@
 ﻿using System;
 using System.IO;
-using ACQC.Metrics.Core.Parsers;
+
+using static ACQC.Metrics.Core.Parsers.LanguageParsers;
 
 var testString = "4,\"quoted,\"\" with comma\",words\nj, are here\n\"sss\"\r";
-var testFile = "analysis_results.csv";
 
 var start = DateTime.UtcNow;
 Console.WriteLine($"Start: {start}");
-testString = File.ReadAllText(testFile);
-var r = Parsers.CsvParser().Parse(testString); //("{ test: \"test\" }");
+testString = File.ReadAllText(testString);
+var r = CsvParser().Parse(testString); //("{ test: \"test\" }");
 
 var end = DateTime.UtcNow;
 Console.WriteLine($"End: {end} Elapsed: {end-start}");
