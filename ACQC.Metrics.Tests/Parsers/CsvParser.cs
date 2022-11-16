@@ -12,7 +12,7 @@ public class CsvParserTests
     {
         var result = CsvParser().Parse("");
         Assert.False(result.IsFaulted);
-        Assert.Equal(Seq.create(Seq.create("")), result.Reply.Result);
+        Assert.Equal(Seq.create(Seq.empty<string>()), result.Reply.Result);
     }
 
     [Fact]

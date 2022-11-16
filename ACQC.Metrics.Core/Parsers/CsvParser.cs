@@ -10,15 +10,11 @@ public static partial class LanguageParsers
 {
     public static Parser<Seq<Seq<string>>> CsvParser(char separatorChar = ',')
     {
+        var endOfValue = $"{separatorChar}\n\r";
         var separator = ch(separatorChar)
                         .label("separator");
 
-        var eol = (from rn in oneOf("\n\r")
-                   from _b in attempt(ch(rn == '\n' ? '\r' : '\n'))
-                   select '\n')
-                   .label("eol");
-
-        var delimiter = choice(separator, eol, eof.Map(_ => '\n'))
+        var delimiter = choice(separator, endOfLine)
                         .label("delimiter");
 
         var quotedChar = either(
@@ -31,18 +27,18 @@ public static partial class LanguageParsers
                            from content in many(quotedChar)
                            from _e in ch('"').label("quote at end of value")
                            select content)
-                           .label("quotedValue");
+                           .label("quoted value");
 
-        var value = asString(either(
-            quotedValue,
-            manyUntil(anyChar, lookAhead(delimiter))
-            ))
+        var unquotedValue = many(noneOf(endOfValue))
+                            .label("unquoted value");
+
+        var value = asString(either(quotedValue, unquotedValue))
             .label("value");
 
         var line = sepBy(value, separator)
                    .label("line");
 
-        return sepBy(line, eol)
+        return sepBy(line, endOfLine)
                .label("file");
     }
 }
