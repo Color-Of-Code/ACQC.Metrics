@@ -1,10 +1,18 @@
 <Project Sdk="Microsoft.NET.Sdk">
-
     <PropertyGroup>
         <TargetFramework>net6.0</TargetFramework>
         <EnableNETAnalyzers>true</EnableNETAnalyzers>
         <EnforceCodeStyleInBuild>true</EnforceCodeStyleInBuild>
         <AnalysisMode>AllEnabledByDefault</AnalysisMode>
     </PropertyGroup>
+    <ItemGroup>
+        <AssemblyAttribute Include="System.Runtime.CompilerServices.InternalsVisibleToAttribute">
+            <_Parameter1>ACQC.Metrics.Tests</_Parameter1>
+        </AssemblyAttribute>
+    </ItemGroup>
+    <ItemGroup>
+        <PackageReference Include="LanguageExt.Core" Version="4.2.9" />
+        <PackageReference Include="LanguageExt.Parsec" Version="4.2.9" />
+    </ItemGroup>
 
 </Project>
